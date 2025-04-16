@@ -1,0 +1,21 @@
+user:
+    name: tom-tom
+    full_name: Tom Moyer
+    gh_username: tommoyer
+    gpg_key: "0x6B0A28C4075F6051"
+    shell: /usr/bin/zsh
+    gmail: tommoyer@gmail.com
+infra_user:
+    name: ansible
+    public_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEsigbUHTydKuB4wSqYB9W5kg386mq9N0xehwezw1bnw ansible@desktop
+    gh_username: moyer-infra
+    gh_email: tommoyer+infra@gmail.com
+# Tailscale
+tailnet_domain: duckbill-frog.ts.net
+tailscale_tags:
+    - infra
+tailscale_oauth_ephemeral: true
+tailscale_oauth_preauthorized: true
+tailscale_client_id: k7ReNkprLG11CNTRL
+tailscale_up_skip: true
+# Add things to Caddy when accessing admin panels, not basic services

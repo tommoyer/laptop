@@ -1,0 +1,173 @@
+---
+- name: Include common config for terminal and workstation
+  ansible.builtin.import_playbook: ../terminal/terminal.yml
+
+- name: Workstation deployment
+  hosts: all
+  vars_files:
+    - common-vars.yml
+    - secrets.enc
+    - workstation.yml
+  tasks:
+  - name: Download GPG key for HCP Packer
+    become: true
+    ansible.builtin.get_url:
+      url: https://apt.releases.hashicorp.com/gpg
+      dest: /tmp/gpg
+      mode: '0644'
+      force: true
+
+  - name: Install GPG key for HCP Packer
+    become: true
+    ansible.builtin.shell: "gpg --dearmor -o /etc/apt/keyrings/hashicorp-archive-keyring.gpg /tmp/gpg"
+  
+  - name: Add HCP Packer repository
+    become: true
+    ansible.builtin.apt_repository:
+      repo: 'deb [arch=amd64 signed-by=/etc/apt/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com noble main'
+      state: present
+      filename: "hashicorp.list"
+
+  - name: Add ulauncher PPA
+    become: true
+    ansible.builtin.apt_repository:
+      repo: ppa:agornostal/ulauncher
+      codename: noble
+
+  - name: Download Zabbly GPG key
+    become: true
+    ansible.builtin.get_url:
+      url: https://pkgs.zabbly.com/key.asc
+      dest: /etc/apt/keyrings/zabbly.asc
+  
+  - name: Create Zabbly repo file
+    become: true
+    ansible.builtin.copy:
+      src: files/workstation/zabbly-incus-stable.sources
+      dest: /etc/apt/sources.list.d/zabbly-incus-stable.sources
+
+  - name: Download GPG key for VScode
+    become: true
+    ansible.builtin.get_url:
+      url: https://packages.microsoft.com/keys/microsoft.asc
+      dest: /tmp/ms-gpg
+      mode: '0644'
+      force: true
+
+  - name: Install GPG key for VScode
+    become: true
+    ansible.builtin.shell: "gpg --dearmor -o /etc/apt/keyrings/packages.microsoft.gpg /tmp/ms-gpg"
+  
+  - name: Add VScode repository
+    become: true
+    ansible.builtin.apt_repository:
+      repo: 'deb [arch=amd64 signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main'
+      state: present
+      filename: "vscode.list"
+  
+  - name: Install workstation packages
+    become: true
+    ansible.builtin.package:
+      name: "{{ workstation_debs }}"
+      state: latest
+
+  - name: Install Google Chrome
+    ansible.builtin.apt:
+      deb: https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+  - name: Install Browsers
+    ansible.builtin.apt:
+      deb: https://github.com/Browsers-software/browsers/releases/latest/download/browsers_amd64.deb
+  
+  - name: Install flatpaks
+    community.general.flatpak:
+      name: "{{ flatpaks }}"
+      state: present
+  
+  - name: Install python packages
+    community.general.pipx:
+      name: "{{ item }}"
+    loop: "{{ workstation_pips }}"
+
+  - name: Configure PAM for Yubikey
+    become: true
+    ansible.builtin.copy:
+      src: files/workstation/common-u2f
+      dest: /etc/pam.d/common-u2f
+  
+  - name: Add Yubikey as auth option for sudo
+    become: true
+    ansible.builtin.lineinfile:
+      path: /etc/pam.d/sudo
+      insertbefore: '@include common-auth'
+      line: '@include common-u2f'
+  
+  - name: Install udev rules
+    become: true
+    ansible.builtin.copy:
+      src: files/workstation/70-input.rules
+      dest: /etc/udev/rules.d/70-input.rules
+      mode: u=rw,g=r,o=r
+  
+  - name: Install udev rules
+    become: true
+    ansible.builtin.copy:
+      src: files/workstation/50-usb-power-save.rules
+      dest: /etc/udev/rules.d/50-usb-power-save.rules
+      mode: u=rw,g=r,o=r
+  
+  - name: Reload udev rules
+    become: true
+    ansible.builtin.command: udevadm control --reload-rules
+  
+  - name: Configure user
+    become: true
+    ansible.builtin.user:
+      name: "{{ user.name }}"
+      comment: "{{ user.full_name }}"
+      create_home: True
+      shell: /usr/bin/zsh
+      state: present
+      groups:
+        - incus-admin
+      append: yes
+  
+  - name: Create application directory (1/2)
+    ansible.builtin.file:
+      path: ${HOME}/.local/share/applications
+      state: directory
+      mode: '0755'
+  
+  - name: Create application directory (2/2)
+    ansible.builtin.file:
+      path: ${HOME}/.local/share/flatpak/exports/share/applications
+      state: directory
+      mode: '0755'
+
+  - name: Update list of installed applications (1/2)
+    ansible.builtin.command: update-desktop-database ${HOME}/.local/share/applications
+  
+  - name: Update list of installed applications (2/2)
+    ansible.builtin.command: update-desktop-database ${HOME}/.local/share/flatpak/exports/share/applications
+      
+  - name: Stow dotfiles
+    stow:
+      state: latest
+      package: '{{ item }}'
+      dir: "${HOME}/.dotfiles"
+      target: '$HOME'
+    loop: "{{ workstation_dotfiles }}"
+    
+  - name: Post-Ansible finish script
+    ansible.builtin.template:
+      src: templates/workstation/finish-setup.sh.j2
+      dest: ${HOME}/finish-setup.sh
+      mode: u=rwx,g=r,o=r
+    
+  - name: Copy default keyboard settings
+    become: true
+    ansible.builtin.copy:
+      src: keyboard
+      dest: /etc/default/keyboard
+      mode: u=rw,g=r,o=r
+

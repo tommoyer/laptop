@@ -1,0 +1,98 @@
+#!/bin/bash
+
+export GH_TOKEN={{ gh_token }}
+
+# Yubikey setup
+if [[ ! -e /etc/u2f_mappings ]]
+then
+        echo ""
+        read -p "Insert backup Yubikey #1, and then press any key" -n1 -s
+        echo ""
+        pamu2fcfg -n | tee -a u2f_mappings   # Backup YubiKey
+
+        echo ""
+        read -p "Remove backup Yubikey #1, insert backup Yubikey #2, and then press any key" -n1 -s
+        echo ""
+        pamu2fcfg -n | tee -a u2f_mappings   # Backup YubiKey
+
+        echo  ""
+        read -p "Rem0ove backup Yubikey #2, insert primary Yubikey, and then press any key" -n1 -s
+        echo ""
+        pamu2fcfg | tee u2f_mappings               # Main YubiKey
+
+        echo ""
+        echo >> u2f_mappings
+        sudo mv u2f_mappings /etc
+        echo ""
+        gpg-connect-agent "scd serialno" "learn --force" /bye
+else
+        echo "Yubikeys already setup"
+fi
+# End Yubikey setup
+
+# Application setup
+gh release download -R probonopd/go-appimage -p 'appimaged-*x86_64.AppImage' continuous -D ~/Applications/
+gh release download -R AppImageCommunity/AppImageUpdate -p 'AppImageUpdate-x86_64.AppImage' continuous -D ~/Applications/
+gh release download -R obsidianmd/obsidian-releases -p "Obsidian-$(gh release list -R obsidianmd/obsidian-releases -L 1 --json name | jq '.[0].name' | sed s/\"//g).AppImage" -D ~/Applications/
+
+chmod +x ~/Applications/*.AppImage
+/home/tom-tom/Applications/appimaged*
+
+# End application setup
+
+# GPG key setup
+if ! gpg --list-keys | grep "{{ user.gpg_key }}"
+then
+        gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "{{ user.gpg_key }}"
+else
+        echo "GPG public key already imported"
+fi
+# End GPG key setup
+
+# Application list updates
+        if [[ -e ${HOME}/.local/share/applications ]]
+        then
+                update-desktop-database ${HOME}/.local/share/applications
+        fi
+
+        if [[ -e ${HOME}/.local/share/flatpak/exports/share/applications ]]
+        then
+                update-desktop-database ${HOME}/.local/share/flatpak/exports/share/applications
+        fi
+# End application list updates
+
+# Repo setup
+mkdir -p ~/.config/mr/config.d/
+pushd ~/.config/mr/config.d &>/dev/null
+for file in $(ls ../available.d)
+do
+    read -p "Include ${file}? (y/n) " yn
+    case $yn in
+        [yY] )
+            ln -s ../available.d/${file} .
+            ;;
+        [nN] ) echo "Skipping";
+            ;;
+        * )
+            echo "Invalid response, skipping"
+            ;;
+    esac
+done
+popd &>/dev/null
+pushd ~ &>/dev/null
+mr update
+popd &>/dev/null
+# End repo setup
+
+# Misc. setup
+systemctl enable --user --now syncthing.service
+systemctl enable --user --now ulauncher.service
+# End misc. setup
+
+# Color scheme for terminal
+bash -c "$(wget -qO- https://git.io/vQgMr)"
+
+echo "Manually download Morgen and Mailspring debs and install them"
+
+echo "Setup is finished"
+echo "After configuring incus, setup the DNS resolution: https://linuxcontainers.org/incus/docs/main/howto/network_bridge_resolved/"
