@@ -16,6 +16,5 @@ tailscale_tags:
     - infra
 tailscale_oauth_ephemeral: true
 tailscale_oauth_preauthorized: true
-tailscale_client_id: k7ReNkprLG11CNTRL
-tailscale_up_skip: true
-# Add things to Caddy when accessing admin panels, not basic services
+tailscale_client_id: kY8QTnvP4311CNTRL
+tailscale_up_skip: false

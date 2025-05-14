@@ -1,5 +1,5 @@
-terminal_pkgs:
-    - apt-file
+packages:
+# Terminal
     - bat
     - btop
     - byobu
@@ -8,12 +8,11 @@ terminal_pkgs:
     - fd-find
     - fzf
     - gh
-    - google-cloud-cli
-    - google-cloud-cli-cloud-run-proxy
+    - google-cloud-cli # (https://cloud.google.com/sdk/docs/install-sdk)
+    - incus
     - jq
     - myrepos
     - ncdu
-    - neofetch
     - neovim
     - openssh-server
     - pipx
@@ -22,7 +21,7 @@ terminal_pkgs:
     - python3-virtualenv
     - restic
     - rvm
-    - silversearcher-ag
+    - the_silver_searcher
     - stow
     - tig
     - tmux
@@ -30,7 +29,23 @@ terminal_pkgs:
     - zsh
     - zsh-autosuggestions
     - zsh-syntax-highlighting
-terminal_pips:
+# Workstation
+    - code
+    - flatpak
+    - powerline=fonts
+    - input-remapper
+    - pam-u2f
+    - pam_yubico
+    - qemu-system
+    - qemu-utils
+    - solaar
+    - syncthing
+    - @virtualization
+    - wl-clipboard
+    - yubikey-manager
+   - yubikey-personalization-gui
+pips:
+# Terminal
     - black
     - flake8
     - frogmouth
@@ -38,7 +53,11 @@ terminal_pips:
     - nuitka
     - pipenv
     - poetry
-terminal_dotfiles:
+    - ssh-import-id
+# Workstation
+    - python-kasa[speedups]
+dotfiles:
+# Terminal
     - apps
     - gpg
     - misc
@@ -48,52 +67,26 @@ terminal_dotfiles:
     - vcs
     - zsh
 # Workstation
-workstation_pkgs:
-    - code
-    - flatpak
-    - fonts-powerline
-    - incus
-    - input-remapper
-    - libpam-u2f
-    - libpam-yubico
-    - libqt5widgets5
-    - libxcb-cursor0
-    - packer
-    - qemu-system
-    - qemu-utils
-    - scdaemon
-    - ssh-import-id
-    - solaar
-    - stow
-    - syncthing
-    - syncthingtray
-    - ulauncher
-    - virt-viewer
-    - xclip
-    - yubikey-manager
-    - yubikey-personalization
-workstation_pips:
-    - python-kasa[speedups]
-workstation_dotfiles:
     - fonts
     - pics
     - streamdeck
-    - subl
 flatpaks:
     - com.bambulab.BambuStudio
     - com.bitwarden.desktop
     - com.core447.StreamController
-    - com.github.hluk.copyq
     - com.github.Murmele.Gittyup
     - com.github.tchx84.Flatseal
-    - com.slack.Slack
     - com.spotify.Client
-    - com.sublimetext.three
     - com.valvesoftware.Steam
-    - dev.deedles.Trayscale
     - net.codeindustry.MasterPDFEditor
     - net.lutris.Lutris
     - org.ferdium.Ferdium
     - org.prismlauncher.PrismLauncher
-    - org.shotcut.Shotcut
     - us.zoom.Zoom
+    - com.ticktick.TickTick
+    - md.obsidian.Obsidian
+    - com.getmailspring.Mailspring
+homebrew_packages:
+    - sops
+    - kubectl
+    - talosctl

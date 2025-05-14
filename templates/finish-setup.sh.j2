@@ -33,7 +33,8 @@ fi
 # Application setup
 gh release download -R probonopd/go-appimage -p 'appimaged-*x86_64.AppImage' continuous -D ~/Applications/
 gh release download -R AppImageCommunity/AppImageUpdate -p 'AppImageUpdate-x86_64.AppImage' continuous -D ~/Applications/
-gh release download -R obsidianmd/obsidian-releases -p "Obsidian-$(gh release list -R obsidianmd/obsidian-releases -L 1 --json name | jq '.[0].name' | sed s/\"//g).AppImage" -D ~/Applications/
+# Download Morgen
+curl -L https://dl.todesktop.com/210203cqcj00tw1/linux/appImage/x64 -o ~/Applications/
 
 chmod +x ~/Applications/*.AppImage
 /home/tom-tom/Applications/appimaged*
@@ -86,13 +87,7 @@ popd &>/dev/null
 
 # Misc. setup
 systemctl enable --user --now syncthing.service
-systemctl enable --user --now ulauncher.service
 # End misc. setup
 
 # Color scheme for terminal
 bash -c "$(wget -qO- https://git.io/vQgMr)"
-
-echo "Manually download Morgen and Mailspring debs and install them"
-
-echo "Setup is finished"
-echo "After configuring incus, setup the DNS resolution: https://linuxcontainers.org/incus/docs/main/howto/network_bridge_resolved/"
