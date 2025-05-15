@@ -1,0 +1,8 @@
+---
+roles:
+  - src: artis3n.tailscale
+
+collections:
+  - name: community.general
+    version: ">7.0.0"
+    source: https://galaxy.ansible.com
