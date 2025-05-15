@@ -24,7 +24,7 @@ fi
 
 if [[ $pkgs != "" ]]
 then
-  sudo pacman -Syu --noconfirm $pkgs
+  sudo dnf install -y $pkgs
 else
   echo "All packaages installed"
 fi
