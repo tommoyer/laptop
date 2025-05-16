@@ -54,14 +54,19 @@
       name: "{{ item }}"
     loop: "{{ pips }}"
 
+  - name: Download Homebrew install script
+    ansible.builtin.get_url:
+      url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+      dest: /tmp/install.sh
+      mode: u=rwx,g=r,o=r
+      force: no
+
   - name: Install Homebrew
-    become: true
-    ansible.builtin.command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" --unattended
+    ansible.builtin.command: "/bin/bash -c 'export NONINTERACTIVE=1; /tmp/install.sh'"
     args:
       creates: /home/linuxbrew/.linuxbrew/bin/brew
 
   - name: Install Homebrew packages
-    become: true
     ansible.builtin.command: /home/linuxbrew/.linuxbrew/bin/brew install {{ item }}
     args:
       chdir: /home/linuxbrew/.linuxbrew/bin
@@ -70,7 +75,7 @@
   - name: Configure PAM for Yubikey
     become: true
     ansible.builtin.copy:
-      src: files/workstation/common-u2f
+      src: files/common-u2f
       dest: /etc/pam.d/common-u2f
   
   - name: Add Yubikey as auth option for sudo
@@ -83,14 +88,14 @@
   - name: Install udev rules
     become: true
     ansible.builtin.copy:
-      src: files/workstation/70-input.rules
+      src: files/70-input.rules
       dest: /etc/udev/rules.d/70-input.rules
       mode: u=rw,g=r,o=r
   
   - name: Install udev rules
     become: true
     ansible.builtin.copy:
-      src: files/workstation/50-usb-power-save.rules
+      src: files/50-usb-power-save.rules
       dest: /etc/udev/rules.d/50-usb-power-save.rules
       mode: u=rw,g=r,o=r
   
@@ -124,6 +129,16 @@
   
   - name: Update list of installed applications (2/2)
     ansible.builtin.command: update-desktop-database ${HOME}/.local/share/flatpak/exports/share/applications
+
+  - name: Clone dotfiles
+    ansible.builtin.git:
+      repo: https://github.com/tommoyer/dotfiles.git
+      dest: ${HOME}/.dotfiles
+
+  - name: Remove existing .ssh directory
+    ansible.builtin.file:
+      path: ${HOME}/.ssh
+      state: absent
       
   - name: Stow dotfiles
     stow:
@@ -154,7 +169,7 @@
   - name: Copy default keyboard settings
     become: true
     ansible.builtin.copy:
-      src: keyboard
+      src: files/keyboard
       dest: /etc/default/keyboard
       mode: u=rw,g=r,o=r
 

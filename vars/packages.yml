@@ -4,6 +4,7 @@ packages:
     - btop
     - byobu
     - curl
+    - '@development-tools'
     - dialog
     - fd-find
     - fzf
@@ -88,3 +89,4 @@ homebrew_packages:
     - sops
     - kubectl
     - talosctl
+    - gcc

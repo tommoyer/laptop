@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export GH_TOKEN={{ gh_token }}
+export GH_TOKEN={{ user_secrets.gh_token }}
 
 # Yubikey setup
 if [[ ! -e /etc/u2f_mappings ]]
