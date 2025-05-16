@@ -22,11 +22,18 @@ else
   echo "pipx already installed"
 fi
 
+if rpm -q python3-libdnf5 &>/dev/null; then
+  echo "python3-libdnf5 is already installed"
+else
+  pkgs+="python3-libdnf5"
+  echo "Selecting python3-libdnf5 to be installed"
+fi
+
 if [[ $pkgs != "" ]]
 then
   sudo dnf install -y $pkgs
 else
-  echo "All packaages installed"
+  echo "All packages installed"
 fi
 
 if ! pipx list | grep "package ansible" &> /dev/null

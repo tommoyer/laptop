@@ -8,7 +8,7 @@ packages:
     - fd-find
     - fzf
     - gh
-    - google-cloud-cli # (https://cloud.google.com/sdk/docs/install-sdk)
+    - google-cloud-cli
     - incus
     - jq
     - myrepos
@@ -32,18 +32,16 @@ packages:
 # Workstation
     - code
     - flatpak
-    - powerline=fonts
+    - powerline-fonts
     - input-remapper
     - pam-u2f
     - pam_yubico
-    - qemu-system
-    - qemu-utils
     - solaar
     - syncthing
-    - @virtualization
+    - '@virtualization'
     - wl-clipboard
     - yubikey-manager
-   - yubikey-personalization-gui
+    - yubikey-personalization-gui
 pips:
 # Terminal
     - black

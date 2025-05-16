@@ -7,18 +7,19 @@
     - packages.yml
   tasks:
   - name: Add Google Cloud CLI repository
+    become: true
     ansible.builtin.yum_repository:
       name: google-cloud-cli
       description: Google Cloud CLI
       baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
       gpgcheck: yes
-      gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+      gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
       enabled: yes
       state: present
       repo_gpgcheck: no
 
-    # Setup VSCode repository
   - name: Add VSCode repository
+    become: true
     ansible.builtin.yum_repository:
       name: vscode
       description: Visual Studio Code
@@ -36,11 +37,14 @@
       state: latest
 
   - name: Install Browsers
+    become: true
     ansible.builtin.dnf:
-      name: 'https://github.com/Browsers-software/browsers/releases/latest/download/browsers_x86_64.deb'
+      name: 'https://github.com/Browsers-software/browsers/releases/latest/download/browsers.x86_64.rpm'
       state: present
+      disable_gpg_check: true
   
   - name: Install flatpaks
+    become: true
     community.general.flatpak:
       name: "{{ flatpaks }}"
       state: present
