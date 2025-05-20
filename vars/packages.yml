@@ -90,3 +90,4 @@ homebrew_packages:
     - kubectl
     - talosctl
     - gcc
+    - argocd
