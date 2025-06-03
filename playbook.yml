@@ -90,8 +90,8 @@
     become: true
     ansible.builtin.lineinfile:
       path: /etc/pam.d/sudo
-      insertbefore: '@include common-auth'
-      line: '@include common-u2f'
+      insertafter: '#%PAM-1.0'
+      line: 'auth include common-u2f'
   
   - name: Install udev rules
     become: true
