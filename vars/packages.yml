@@ -34,6 +34,7 @@ packages:
 # Workstation
     - code
     - flatpak
+    - gnome-keyring
     - powerline-fonts
     - pam-u2f
     - pam_yubico
