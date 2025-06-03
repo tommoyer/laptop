@@ -42,6 +42,14 @@
       name: 'https://github.com/Browsers-software/browsers/releases/latest/download/browsers.x86_64.rpm'
       state: present
       disable_gpg_check: true
+
+  - name: Configure flathub remote
+    become: true
+    community.general.flatpak_remote:
+      name: flathub
+      state: present
+      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+      method: system
   
   - name: Install flatpaks
     become: true

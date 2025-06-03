@@ -16,7 +16,7 @@ pkgs=""
 
 if ! which pipx &> /dev/null
 then
-  pkgs+="pipx"
+  pkgs+=" pipx "
   echo "Selecting pipx to be installed"
 else
   echo "pipx already installed"
@@ -25,7 +25,7 @@ fi
 if rpm -q python3-libdnf5 &>/dev/null; then
   echo "python3-libdnf5 is already installed"
 else
-  pkgs+="python3-libdnf5"
+  pkgs+=" python3-libdnf5 "
   echo "Selecting python3-libdnf5 to be installed"
 fi
 

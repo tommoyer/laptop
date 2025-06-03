@@ -27,6 +27,7 @@ packages:
     - tig
     - tmux
     - tree
+    - vim-enhanced
     - zsh
     - zsh-autosuggestions
     - zsh-syntax-highlighting
@@ -34,9 +35,9 @@ packages:
     - code
     - flatpak
     - powerline-fonts
-    - input-remapper
     - pam-u2f
     - pam_yubico
+    - pamu2fcfg
     - solaar
     - syncthing
     - '@virtualization'
