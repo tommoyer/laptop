@@ -8,7 +8,7 @@ then
         echo ""
         read -p "Insert backup Yubikey #1, and then press any key" -n1 -s
         echo ""
-        pamu2fcfg -n | tee -a u2f_mappings   # Backup YubiKey
+        pamu2fcfg | tee -a u2f_mappings   # Backup YubiKey
 
         echo ""
         read -p "Remove backup Yubikey #1, insert backup Yubikey #2, and then press any key" -n1 -s
@@ -16,9 +16,9 @@ then
         pamu2fcfg -n | tee -a u2f_mappings   # Backup YubiKey
 
         echo  ""
-        read -p "Rem0ove backup Yubikey #2, insert primary Yubikey, and then press any key" -n1 -s
+        read -p "Remove backup Yubikey #2, insert primary Yubikey, and then press any key" -n1 -s
         echo ""
-        pamu2fcfg | tee u2f_mappings               # Main YubiKey
+        pamu2fcfg -n | tee -a u2f_mappings               # Main YubiKey
 
         echo ""
         echo >> u2f_mappings
