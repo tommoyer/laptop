@@ -6,6 +6,18 @@
     - secrets.yml
     - packages.yml
   tasks:
+  - name: Download Homebrew install script
+    ansible.builtin.get_url:
+      url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+      dest: /tmp/install.sh
+      mode: u=rwx,g=r,o=r
+      force: no
+
+  - name: Install Homebrew
+    ansible.builtin.command: "/bin/bash -c 'export NONINTERACTIVE=1; /tmp/install.sh'"
+    args:
+      creates: /home/linuxbrew/.linuxbrew/bin/brew
+
   - name: Add Google Cloud CLI repository
     become: true
     ansible.builtin.yum_repository:
@@ -73,18 +85,6 @@
     community.general.pipx:
       name: "{{ item }}"
     loop: "{{ pips }}"
-
-  - name: Download Homebrew install script
-    ansible.builtin.get_url:
-      url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-      dest: /tmp/install.sh
-      mode: u=rwx,g=r,o=r
-      force: no
-
-  - name: Install Homebrew
-    ansible.builtin.command: "/bin/bash -c 'export NONINTERACTIVE=1; /tmp/install.sh'"
-    args:
-      creates: /home/linuxbrew/.linuxbrew/bin/brew
 
   - name: Install Homebrew packages
     ansible.builtin.command: /home/linuxbrew/.linuxbrew/bin/brew install {{ item }}

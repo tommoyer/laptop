@@ -91,3 +91,4 @@ homebrew_packages:
     - kubectl
     - talosctl
     - gcc
+    - fluxcd/tap/flux
