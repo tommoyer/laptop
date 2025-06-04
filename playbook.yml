@@ -30,6 +30,18 @@
       state: present
       repo_gpgcheck: no
 
+  - name: Download Brave install script
+    ansible.builtin.get_url:
+      url: https://dl.brave.com/install.sh
+      dest: /tmp/install-brave.sh
+      mode: u=rwx,g=r,o=r
+      force: no
+
+  - name: Install Brave
+    ansible.builtin.command: "/bin/sh -c '/tmp/install-brave.sh'"
+    args:
+      creates: /usr/bin/brave-browser
+
   - name: Install workstation packages
     become: true
     ansible.builtin.package:
