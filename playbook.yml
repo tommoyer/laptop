@@ -155,3 +155,31 @@
       dest: /etc/default/keyboard
       mode: u=rw,g=r,o=r
 
+  - name: Ensure "quiet splash" is appended to GRUB_CMDLINE_LINUX_DEFAULT
+    ansible.builtin.lineinfile:
+      path: /etc/default/grub
+      regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+      line: "{{ grub_cmdline_linux_default_line }}"
+      backrefs: yes
+    vars:
+      # Extract the current value and append 'quiet splash' if not present
+      grub_cmdline_linux_default_line: |
+        {% set current = lookup('ansible.builtin.file', '/etc/default/grub') %}
+        {% set re = r"^GRUB_CMDLINE_LINUX_DEFAULT='([^']*)'" %}
+        {% set match = (current | regex_search(re, '\\1')) %}
+        {% if match %}
+          {% set val = match %}
+          {% set tokens = val.split() %}
+          {% set has_quiet = 'quiet' in tokens %}
+          {% set has_splash = 'splash' in tokens %}
+          {% set new_tokens = tokens + ([] if has_quiet else ['quiet']) + ([] if has_splash else ['splash']) %}
+          GRUB_CMDLINE_LINUX_DEFAULT='{{ ' '.join(new_tokens) }}'
+        {% else %}
+          GRUB_CMDLINE_LINUX_DEFAULT='quiet splash'
+        {% endif %}
+
+  - name: Regenerate grub.cfg
+    ansible.builtin.command: grub-mkconfig -o /boot/grub/grub.cfg
+    become: true
+    notify: Update grub configuration
+
