@@ -16,22 +16,16 @@ pkgs=""
 
 if ! which pipx &> /dev/null
 then
-  pkgs+=" pipx "
+  pkgs+=" python-pipx "
   echo "Selecting pipx to be installed"
 else
   echo "pipx already installed"
 fi
 
-if rpm -q python3-libdnf5 &>/dev/null; then
-  echo "python3-libdnf5 is already installed"
-else
-  pkgs+=" python3-libdnf5 "
-  echo "Selecting python3-libdnf5 to be installed"
-fi
-
 if [[ $pkgs != "" ]]
 then
-  sudo dnf install -y $pkgs
+  sudo pacman -Sy
+  sudo pacman -S --noconfirm $pkgs
 else
   echo "All packages installed"
 fi
@@ -41,13 +35,6 @@ then
   pipx install --include-deps ansible
 else
   echo "Ansible already installed"
-fi
-
-if ! ~/.local/bin/ansible-galaxy collection list | grep community.general &> /dev/null
-then
-  ~/.local/bin/ansible-galaxy collection install community.general
-else
-  echo "Skipping installation of community.general"
 fi
 
 # Install any other things from requirements.txt

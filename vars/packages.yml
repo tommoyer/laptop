@@ -4,46 +4,50 @@ packages:
     - btop
     - byobu
     - curl
-    - '@development-tools'
     - dialog
-    - fd-find
+    - fd
     - fzf
-    - gh
-    - google-cloud-cli
+    - github-cli
     - incus
     - jq
     - myrepos
     - ncdu
     - neovim
     - openssh-server
-    - pipx
+    - python-pipx
     - prettyping
-    - python3-pip
-    - python3-virtualenv
+    - python-pip
+    - python-virtualenv
     - restic
-    - rvm
     - the_silver_searcher
     - stow
     - tig
     - tmux
     - tree
-    - vim-enhanced
+    - vim
     - zsh
     - zsh-autosuggestions
     - zsh-syntax-highlighting
 # Workstation
-    - code
     - flatpak
+    - fluxcd
+    - kubectl
     - powerline-fonts
     - pam-u2f
-    - pam_yubico
-    - pamu2fcfg
+    - plymouth
+    - ptyxis
     - solaar
+    - sops
     - syncthing
-    - '@virtualization'
-    - wl-clipboard
+    - talosctl
     - yubikey-manager
     - yubikey-personalization-gui
+aur_packages:
+    - google-cloud-cli
+    - visual-studio-code-bin
+    - brave-bin
+    - browsers-bin
+    - ulauncher
 pips:
 # Terminal
     - black
@@ -86,9 +90,3 @@ flatpaks:
     - com.ticktick.TickTick
     - md.obsidian.Obsidian
     - com.getmailspring.Mailspring
-homebrew_packages:
-    - sops
-    - kubectl
-    - talosctl
-    - gcc
-    - fluxcd/tap/flux

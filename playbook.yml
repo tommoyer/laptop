@@ -6,66 +6,34 @@
     - secrets.yml
     - packages.yml
   tasks:
-  - name: Download Homebrew install script
-    ansible.builtin.get_url:
-      url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-      dest: /tmp/install.sh
-      mode: u=rwx,g=r,o=r
-      force: no
+  - name: Create the `aur_builder` user
+    become: yes
+    ansible.builtin.user:
+      name: aur_builder
+      create_home: yes
+      group: wheel
 
-  - name: Install Homebrew
-    ansible.builtin.command: "/bin/bash -c 'export NONINTERACTIVE=1; /tmp/install.sh'"
-    args:
-      creates: /home/linuxbrew/.linuxbrew/bin/brew
-
-  - name: Add Google Cloud CLI repository
-    become: true
-    ansible.builtin.yum_repository:
-      name: google-cloud-cli
-      description: Google Cloud CLI
-      baseurl: https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64
-      gpgcheck: yes
-      gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-      enabled: yes
-      state: present
-      repo_gpgcheck: no
-
-  - name: Add VSCode repository
-    become: true
-    ansible.builtin.yum_repository:
-      name: vscode
-      description: Visual Studio Code
-      baseurl: https://packages.microsoft.com/yumrepos/vscode
-      gpgcheck: yes
-      gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-      enabled: yes
-      state: present
-      repo_gpgcheck: no
-
-  - name: Download Brave install script
-    ansible.builtin.get_url:
-      url: https://dl.brave.com/install.sh
-      dest: /tmp/install-brave.sh
-      mode: u=rwx,g=r,o=r
-      force: no
-
-  - name: Install Brave
-    ansible.builtin.command: "/bin/sh -c '/tmp/install-brave.sh'"
-    args:
-      creates: /usr/bin/brave-browser
+  - name: Allow the `aur_builder` user to run `sudo pacman` without a password
+    become: yes
+    ansible.builtin.lineinfile:
+      path: /etc/sudoers.d/11-install-aur_builder
+      line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+      create: yes
+      mode: 0644
+      validate: 'visudo -cf %s'
 
   - name: Install workstation packages
     become: true
-    ansible.builtin.package:
+    community.general.pacman:
       name: "{{ packages }}"
       state: latest
 
-  - name: Install Browsers
-    become: true
-    ansible.builtin.dnf:
-      name: 'https://github.com/Browsers-software/browsers/releases/latest/download/browsers.x86_64.rpm'
-      state: present
-      disable_gpg_check: true
+  - name: Install aur packages
+    become: yes
+    become_user: aur_builder
+    kewlfft.aur.aur:
+      use: yay
+      name: "{{ aur_packages }}"
 
   - name: Configure flathub remote
     become: true
@@ -85,12 +53,6 @@
     community.general.pipx:
       name: "{{ item }}"
     loop: "{{ pips }}"
-
-  - name: Install Homebrew packages
-    ansible.builtin.command: /home/linuxbrew/.linuxbrew/bin/brew install {{ item }}
-    args:
-      chdir: /home/linuxbrew/.linuxbrew/bin
-    loop: "{{ homebrew_packages }}"
 
   - name: Configure PAM for Yubikey
     become: true
