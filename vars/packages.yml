@@ -13,7 +13,7 @@ packages:
     - myrepos
     - ncdu
     - neovim
-    - openssh-server
+    - openssh
     - python-pipx
     - prettyping
     - python-pip
