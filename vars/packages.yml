@@ -55,6 +55,8 @@ aur_packages:
     - gnome-shell-extension-no-overview-git
     - gnome-shell-extension-pano-bin
     - extension-manager
+    - morgen-bin
+    - input-remapper-bin
 pips:
 # Terminal
     - black
