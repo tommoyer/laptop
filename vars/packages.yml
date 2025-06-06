@@ -42,12 +42,19 @@ packages:
     - talosctl
     - yubikey-manager
     - yubikey-personalization-gui
+    - gnome-shell-extension-appindicator
+    - gnome-tweaks
+    - gnome-shell-extension-caffeine
 aur_packages:
     - google-cloud-cli
     - visual-studio-code-bin
     - brave-bin
     - browsers-bin
     - ulauncher
+    - pacman-hook-kernel-install
+    - gnome-shell-extension-no-overview-git
+    - gnome-shell-extension-pano-bin
+    - extension-manager
 pips:
 # Terminal
     - black

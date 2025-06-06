@@ -155,31 +155,47 @@
       dest: /etc/default/keyboard
       mode: u=rw,g=r,o=r
 
-  - name: Ensure "quiet splash" is appended to GRUB_CMDLINE_LINUX_DEFAULT
-    ansible.builtin.lineinfile:
-      path: /etc/default/grub
-      regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
-      line: "{{ grub_cmdline_linux_default_line }}"
-      backrefs: yes
-    vars:
-      # Extract the current value and append 'quiet splash' if not present
-      grub_cmdline_linux_default_line: |
-        {% set current = lookup('ansible.builtin.file', '/etc/default/grub') %}
-        {% set re = r"^GRUB_CMDLINE_LINUX_DEFAULT='([^']*)'" %}
-        {% set match = (current | regex_search(re, '\\1')) %}
-        {% if match %}
-          {% set val = match %}
-          {% set tokens = val.split() %}
-          {% set has_quiet = 'quiet' in tokens %}
-          {% set has_splash = 'splash' in tokens %}
-          {% set new_tokens = tokens + ([] if has_quiet else ['quiet']) + ([] if has_splash else ['splash']) %}
-          GRUB_CMDLINE_LINUX_DEFAULT='{{ ' '.join(new_tokens) }}'
-        {% else %}
-          GRUB_CMDLINE_LINUX_DEFAULT='quiet splash'
-        {% endif %}
-
-  - name: Regenerate grub.cfg
-    ansible.builtin.command: grub-mkconfig -o /boot/grub/grub.cfg
+  - name: Append "splash quiet" to /etc/kernel/cmdline if not already present
     become: true
-    notify: Update grub configuration
+    ansible.builtin.lineinfile:
+      path: /etc/kernel/cmdline
+      # This regexp matches the entire line (captured in \1)
+      # only if it does not already end with "splash quiet".
+      regexp: '^(.*\S)(?<!splash quiet)$'
+      # If the regexp matches, it replaces the line with its original content (\1)
+      # followed by " splash quiet".
+      line: '\1 splash quiet'
+      backrefs: yes
+      state: present # Ensures the line exists and is modified if regexp matches
+      # Create the file if it does not exist (optional, remove if not desired)
+      # create: yes
+      # mode: '0644' # Set permissions if creating the file
+  
+  - name: Find .conf files in /efi/loader/entries
+    become: true
+    ansible.builtin.find:
+      paths: /efi/loader/entries/
+      patterns: "*.conf"
+      recurse: no  # Entries are typically not in subdirectories
+    register: loader_entries_found
+
+  - name: Append "splash quiet" to options line in relevant bootloader entries
+    become: true
+    ansible.builtin.lineinfile:
+      path: "{{ item.path }}"
+      # This regexp matches a line starting with "options "
+      # and captures the entire line in \1, but only if the line
+      # does NOT already contain the whole word "splash quiet".
+      regexp: '^(options\s+(?:(?!.*\bsplash quiet\b).)*)$'
+      # If the regexp matches, the line is replaced by its original content (\1)
+      # followed by " splash quiet".
+      line: '\1 splash quiet'
+      backrefs: yes
+      state: present # Ensures the line is present (modifies if regexp matches)
+    loop: "{{ loader_entries_found.files }}"
+    when:
+      # Ensure we are processing actual files found by the find module
+      - item.path is defined
+      # Exclude files ending with -fallback.conf
+      - not item.path.endswith('-fallback.conf')
 
