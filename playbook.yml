@@ -85,15 +85,6 @@
     become: true
     ansible.builtin.command: udevadm control --reload-rules
   
-  - name: Configure user
-    become: true
-    ansible.builtin.user:
-      name: "{{ user.name }}"
-      comment: "{{ user.full_name }}"
-      create_home: True
-      shell: /usr/bin/zsh
-      state: present
-  
   - name: Create application directory (1/2)
     ansible.builtin.file:
       path: ${HOME}/.local/share/applications
@@ -206,3 +197,17 @@
       mode: '0644'
       owner: root
       group: root
+
+  - name: Configure user
+    become: true
+    ansible.builtin.user:
+      name: "{{ user.name }}"
+      comment: "{{ user.full_name }}"
+      create_home: True
+      shell: /usr/bin/zsh
+      state: present
+      append: true
+      groups:
+        - wheel
+        - incus-admin
+        - qemu      
