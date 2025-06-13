@@ -46,6 +46,7 @@ packages:
     - ptyxis
     - solaar
     - sops
+    - spice-gtk
     - syncthing
     - talosctl
     - yubikey-manager
