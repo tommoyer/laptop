@@ -5,6 +5,7 @@ packages:
     - byobu
     - curl
     - dialog
+    - diff-so-fancy
     - fd
     - fzf
     - github-cli
@@ -31,6 +32,13 @@ packages:
 # Workstation
     - flatpak
     - fluxcd
+    - gnome-shell-extension-caffeine
+    - gnome-shell-extension-dash-to-panel
+    - gnome-tweaks
+    - incus
+    - incus-tools
+    - incus-ui
+    - libayatana-appindicator
     - kubectl
     - powerline-fonts
     - pam-u2f
@@ -42,9 +50,6 @@ packages:
     - talosctl
     - yubikey-manager
     - yubikey-personalization-gui
-    - gnome-shell-extension-appindicator
-    - gnome-tweaks
-    - gnome-shell-extension-caffeine
 aur_packages:
     - google-cloud-cli
     - visual-studio-code-bin
@@ -54,6 +59,7 @@ aur_packages:
     - pacman-hook-kernel-install
     - gnome-shell-extension-no-overview-git
     - gnome-shell-extension-pano-bin
+    - gnome-shell-extension-tray-icons-reloaded
     - extension-manager
     - morgen-bin
     - input-remapper-bin
@@ -83,6 +89,7 @@ dotfiles:
     - fonts
     - pics
     - streamdeck
+    - ulauncher
 flatpaks:
     - com.bambulab.BambuStudio
     - com.bitwarden.desktop
