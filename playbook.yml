@@ -190,14 +190,6 @@
       # Exclude files ending with -fallback.conf
       - not item.path.endswith('-fallback.conf')
 
-  - name: Copy incus.service overrides
-    ansible.builtin.copy:
-      src: files/override.conf
-      dest: /etc/systemd/system/incus.service.d/override.conf
-      mode: '0644'
-      owner: root
-      group: root
-
   - name: Configure user
     become: true
     ansible.builtin.user:
@@ -209,5 +201,18 @@
       append: true
       groups:
         - wheel
-        - incus-admin
-        - qemu      
+        - libvirt
+
+  - name: Enable libvirtd.service
+    become: true
+    ansible.builtin.systemd:
+      name: libvirtd.service
+      enabled: true
+      state: started
+      
+  - name: Enable libvirtd.socket
+    become: true
+    ansible.builtin.systemd:
+      name: libvirtd.socket
+      enabled: true
+      state: started
