@@ -9,7 +9,6 @@ packages:
     - fd
     - fzf
     - github-cli
-    - incus
     - jq
     - myrepos
     - ncdu
@@ -32,13 +31,13 @@ packages:
 # Workstation
     - flatpak
     - fluxcd
-    - gnome-shell-extension-caffeine
-    - gnome-shell-extension-dash-to-panel
-    - gnome-tweaks
-    - incus
-    - incus-tools
-    - incus-ui
-    - libayatana-appindicator
+    # - gnome-shell-extension-caffeine
+    # - gnome-shell-extension-dash-to-panel
+    # - gnome-tweaks
+    # - incus
+    # - incus-tools
+    # - incus-ui
+    # - libayatana-appindicator
     - kubectl
     - powerline-fonts
     - pam-u2f
@@ -58,12 +57,12 @@ aur_packages:
     - browsers-bin
     - ulauncher
     - pacman-hook-kernel-install
-    - gnome-shell-extension-no-overview-git
-    - gnome-shell-extension-pano-bin
-    - gnome-shell-extension-tray-icons-reloaded
-    - extension-manager
+    # - gnome-shell-extension-no-overview-git
+    # - gnome-shell-extension-pano-bin
+    # - gnome-shell-extension-tray-icons-reloaded
+    # - extension-manager
     - morgen-bin
-    - input-remapper-bin
+    # - input-remapper-bin
     - streamdeck-ui
     - syncthingtray
 pips:
@@ -107,4 +106,4 @@ flatpaks:
     - us.zoom.Zoom
     - com.ticktick.TickTick
     - md.obsidian.Obsidian
-    - com.getmailspring.Mailspring
+    # - com.getmailspring.Mailspring
