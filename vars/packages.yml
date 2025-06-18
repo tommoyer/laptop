@@ -64,6 +64,8 @@ aur_packages:
     - extension-manager
     - morgen-bin
     - input-remapper-bin
+    - streamdeck-ui
+    - syncthingtray
 pips:
 # Terminal
     - black
@@ -94,7 +96,6 @@ dotfiles:
 flatpaks:
     - com.bambulab.BambuStudio
     - com.bitwarden.desktop
-    - com.core447.StreamController
     - com.github.Murmele.Gittyup
     - com.github.tchx84.Flatseal
     - com.spotify.Client
