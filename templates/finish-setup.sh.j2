@@ -87,6 +87,7 @@ popd &>/dev/null
 
 # Misc. setup
 systemctl enable --user --now syncthing.service
+bash -c "$(wget -qO- https://git.io/vQgMr)"
 # End misc. setup
 
 

@@ -14,13 +14,13 @@ packages:
     - ncdu
     - neovim
     - openssh
-    - python-pipx
     - prettyping
     - python-pip
+    - python-pipx
     - python-virtualenv
     - restic
-    - the_silver_searcher
     - stow
+    - the_silver_searcher
     - tig
     - tmux
     - tree
@@ -29,8 +29,23 @@ packages:
     - zsh-autosuggestions
     - zsh-syntax-highlighting
 # Workstation
+    - claws-mail
+    - dconf
     - flatpak
     - fluxcd
+    - kubectl
+    - pam-u2f
+    - plymouth
+    - powerline-fonts
+    - ptyxis
+    - solaar
+    - sops
+    - spice-gtk
+    - syncthing
+    - talosctl
+    - util-linux-libs
+    - yubikey-manager
+    - yubikey-personalization-gui
     # - gnome-shell-extension-caffeine
     # - gnome-shell-extension-dash-to-panel
     # - gnome-tweaks
@@ -38,33 +53,23 @@ packages:
     # - incus-tools
     # - incus-ui
     # - libayatana-appindicator
-    - kubectl
-    - powerline-fonts
-    - pam-u2f
-    - plymouth
-    - ptyxis
-    - solaar
-    - sops
-    - spice-gtk
-    - syncthing
-    - talosctl
-    - yubikey-manager
-    - yubikey-personalization-gui
 aur_packages:
-    - google-cloud-cli
-    - visual-studio-code-bin
     - brave-bin
     - browsers-bin
-    - ulauncher
+    - claws-mail-theme-basicsvg
+    - clawsker
+    - google-cloud-cli
+    - input-remapper-bin
+    - morgen-bin
     - pacman-hook-kernel-install
+    - streamdeck-ui
+    - syncthingtray
+    - ulauncher
+    - visual-studio-code-bin
     # - gnome-shell-extension-no-overview-git
     # - gnome-shell-extension-pano-bin
     # - gnome-shell-extension-tray-icons-reloaded
     # - extension-manager
-    - morgen-bin
-    # - input-remapper-bin
-    - streamdeck-ui
-    - syncthingtray
 pips:
 # Terminal
     - black
