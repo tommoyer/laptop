@@ -38,14 +38,19 @@ packages:
     # - incus-tools
     # - incus-ui
     # - libayatana-appindicator
+    - libvirt
+    - virt-manager
+    - qemu-base
+    - dnsmasq
+    - iptables-nft
     - kubectl
     - powerline-fonts
     - pam-u2f
     - plymouth
-    - ptyxis
+    # - ptyxis
     - solaar
     - sops
-    - spice-gtk
+    # - spice-gtk
     - syncthing
     - talosctl
     - yubikey-manager
@@ -55,7 +60,7 @@ aur_packages:
     - visual-studio-code-bin
     - brave-bin
     - browsers-bin
-    - ulauncher
+    # - ulauncher
     - pacman-hook-kernel-install
     # - gnome-shell-extension-no-overview-git
     # - gnome-shell-extension-pano-bin

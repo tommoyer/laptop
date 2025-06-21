@@ -196,7 +196,7 @@
       name: "{{ user.name }}"
       comment: "{{ user.full_name }}"
       create_home: True
-      shell: /usr/bin/zsh
+      shell: /usr/bin/bash
       state: present
       append: true
       groups:
