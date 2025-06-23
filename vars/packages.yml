@@ -32,6 +32,8 @@ packages:
     - claws-mail
     - dconf
     - dnsmasq
+    - docker
+    - docker-compose
     - flatpak
     - fluxcd
     - iptables-nft

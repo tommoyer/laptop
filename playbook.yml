@@ -12,6 +12,7 @@
       name: aur_builder
       create_home: yes
       group: wheel
+      system: true
 
   - name: Allow the `aur_builder` user to run `sudo pacman` without a password
     become: yes
@@ -190,6 +191,27 @@
       # Exclude files ending with -fallback.conf
       - not item.path.endswith('-fallback.conf')
 
+  - name: Enable libvirtd.service
+    become: true
+    ansible.builtin.systemd:
+      name: libvirtd.service
+      enabled: true
+      state: started
+
+  - name: Enable docker.service
+    become: true
+    ansible.builtin.systemd:
+      name: docker.service
+      enabled: true
+      state: started
+      
+  - name: Enable libvirtd.socket
+    become: true
+    ansible.builtin.systemd:
+      name: libvirtd.socket
+      enabled: true
+      state: started
+
   - name: Configure user
     become: true
     ansible.builtin.user:
@@ -202,17 +224,4 @@
       groups:
         - wheel
         - libvirt
-
-  - name: Enable libvirtd.service
-    become: true
-    ansible.builtin.systemd:
-      name: libvirtd.service
-      enabled: true
-      state: started
-      
-  - name: Enable libvirtd.socket
-    become: true
-    ansible.builtin.systemd:
-      name: libvirtd.socket
-      enabled: true
-      state: started
+        - docker
