@@ -15,6 +15,7 @@ packages:
     - neovim
     - openssh
     - prettyping
+    - pyenv
     - python-pip
     - python-pipx
     - python-virtualenv
@@ -36,6 +37,7 @@ packages:
     - docker-compose
     - flatpak
     - fluxcd
+    - gnome-keyring
     - iptables-nft
     - kubectl
     - libvirt
@@ -65,13 +67,12 @@ aur_packages:
     - browsers-bin
     - clawsker
     - claws-mail-theme-basicsvg
-    - google-cloud-cli
     - input-remapper-bin
     - morgen-bin
     - pacman-hook-kernel-install
+    - pyenv-virtualenv
     - streamdeck-ui
     - syncthingtray
-    - ulauncher
     - visual-studio-code-bin
     # - extension-manager
     # - gnome-shell-extension-no-overview-git
