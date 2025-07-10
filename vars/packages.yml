@@ -13,6 +13,7 @@ packages:
     - myrepos
     - ncdu
     - neovim
+    - nomad
     - openssh
     - prettyping
     - pyenv
@@ -36,11 +37,10 @@ packages:
     - docker
     - docker-compose
     - flatpak
-    - fluxcd
     - gnome-keyring
     - iptables-nft
-    - kubectl
     - libvirt
+    - mattermost-desktop
     - pam-u2f
     - plymouth
     - powerline-fonts
@@ -48,7 +48,6 @@ packages:
     - solaar
     - sops
     - syncthing
-    - talosctl
     - util-linux-libs
     - virt-manager
     - yubikey-manager
@@ -71,6 +70,7 @@ aur_packages:
     - morgen-bin
     - pacman-hook-kernel-install
     - pyenv-virtualenv
+    - slack-desktop
     - streamdeck-ui
     - syncthingtray
     - visual-studio-code-bin
