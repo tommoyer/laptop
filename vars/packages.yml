@@ -9,6 +9,7 @@ packages:
     - fd
     - fzf
     - github-cli
+    - go-task
     - jq
     - myrepos
     - ncdu
