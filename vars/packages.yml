@@ -6,6 +6,7 @@ packages:
     - curl
     - dialog
     - diff-so-fancy
+    - direnv
     - fd
     - fzf
     - github-cli
@@ -22,6 +23,7 @@ packages:
     - python-pipx
     - python-virtualenv
     - restic
+    - sshpass
     - stow
     - the_silver_searcher
     - tig
@@ -99,6 +101,7 @@ dotfiles:
     - gpg
     - misc
     - mr
+    - poetry
     - ssh
     - tmux
     - vcs
