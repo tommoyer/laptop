@@ -25,6 +25,7 @@ packages:
     - restic
     - sshpass
     - stow
+    - tailscale
     - the_silver_searcher
     - tig
     - tmux
