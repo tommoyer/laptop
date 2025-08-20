@@ -57,6 +57,7 @@ packages:
     - texlive-installer
     - util-linux-libs
     - virt-manager
+    - wayclip
     - yubikey-manager
     - yubikey-personalization-gui
     # - gnome-shell-extension-caffeine
