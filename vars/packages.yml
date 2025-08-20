@@ -50,6 +50,7 @@ packages:
     - pandoc-cli
     - plymouth
     - powerline-fonts
+    - python-premailer
     - qemu-base
     - solaar
     - sops
