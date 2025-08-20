@@ -53,6 +53,7 @@ packages:
     - solaar
     - sops
     - syncthing
+    - texlive-installer
     - util-linux-libs
     - virt-manager
     - yubikey-manager
