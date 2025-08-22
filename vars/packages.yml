@@ -10,12 +10,15 @@ packages:
     - fd
     - fzf
     - github-cli
+    - go
     - go-task
+    - jdk-openjdk
     - jq
+    - minicom
     - myrepos
     - ncdu
     - neovim
-    - nomad
+    - nmap
     - openssh
     - prettyping
     - pyenv
@@ -44,14 +47,20 @@ packages:
     - flatpak
     - gnome-keyring
     - iptables-nft
+    - kwalletmanager
     - libvirt
     - mattermost-desktop
     - pam-u2f
     - pandoc-cli
     - plymouth
     - powerline-fonts
-    - python-premailer
     - qemu-base
+    - qemu-system-x86-firmware
+    - ripgrep-all
+    - rpi-imager
+    - rsync
+    - sloccount
+    - socat
     - solaar
     - sops
     - syncthing
@@ -59,7 +68,10 @@ packages:
     - util-linux-libs
     - virt-manager
     - wayclip
+    - wget
+    - wine
     - yubikey-manager
+    - yubikey-personalization
     - yubikey-personalization-gui
     # - gnome-shell-extension-caffeine
     # - gnome-shell-extension-dash-to-panel
@@ -77,12 +89,14 @@ aur_packages:
     - claws-mail-theme-basicsvg
     - input-remapper-bin
     - morgen-bin
+    - naps2-bin
     - pacman-hook-kernel-install
     - pyenv-virtualenv
     - slack-desktop
     - streamdeck-ui
     - syncthingtray
     - visual-studio-code-bin
+    - winbox
     # - extension-manager
     # - gnome-shell-extension-no-overview-git
     # - gnome-shell-extension-pano-bin
@@ -99,7 +113,6 @@ pips:
     - poetry
     - ssh-import-id
 # Workstation
-    - python-kasa[speedups]
 dotfiles:
 # Terminal
     - apps
