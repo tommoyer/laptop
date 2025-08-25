@@ -95,6 +95,7 @@ aur_packages:
     - slack-desktop
     - streamdeck-ui
     - syncthingtray
+    - tail-tray
     - visual-studio-code-bin
     - winbox
     # - extension-manager
