@@ -70,6 +70,7 @@ packages:
     - wayclip
     - wget
     - wine
+    - wireless_tools
     - yubikey-manager
     - yubikey-personalization
     - yubikey-personalization-gui
