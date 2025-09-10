@@ -39,7 +39,6 @@ packages:
     - zsh-syntax-highlighting
 # Workstation
     - bitwarden-cli
-    - claws-mail
     - dconf
     - dnsmasq
     - docker
@@ -47,6 +46,7 @@ packages:
     - flatpak
     - gnome-keyring
     - iptables-nft
+    - kdialog
     - kwalletmanager
     - libvirt
     - mattermost-desktop
@@ -84,10 +84,8 @@ packages:
     # - ptyxis
     # - spice-gtk
 aur_packages:
-    - brave-bin
     - browsers-bin
-    - clawsker
-    - claws-mail-theme-basicsvg
+    - google-chrome
     - input-remapper-bin
     - morgen-bin
     - naps2-bin
@@ -111,6 +109,7 @@ pips:
     - frogmouth
     - mypy
     - nuitka
+    - pandoc-include
     - pipenv
     - poetry
     - ssh-import-id
