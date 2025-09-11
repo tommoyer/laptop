@@ -46,8 +46,8 @@ packages:
     - flatpak
     - gnome-keyring
     - iptables-nft
-    - kdialog
-    - kwalletmanager
+    # - kdialog
+    # - kwalletmanager
     - libvirt
     - mattermost-desktop
     - pam-u2f
@@ -55,6 +55,7 @@ packages:
     - plymouth
     - powerline-fonts
     - qemu-base
+    - qemu-desktop
     - qemu-system-x86-firmware
     - ripgrep-all
     - rpi-imager
@@ -67,7 +68,7 @@ packages:
     - texlive-installer
     - util-linux-libs
     - virt-manager
-    - wayclip
+    # - wayclip
     - wget
     - wine
     - wireless_tools
@@ -87,6 +88,7 @@ aur_packages:
     - browsers-bin
     - google-chrome
     - input-remapper-bin
+    - mailspring-bin
     - morgen-bin
     - naps2-bin
     - pacman-hook-kernel-install
