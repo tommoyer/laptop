@@ -13,6 +13,8 @@ packages:
     - github-cli
     - go
     - go-task
+    - incus
+    - incus-tools
     - jdk-openjdk
     - jq
     - minicom
