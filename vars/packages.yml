@@ -15,6 +15,7 @@ packages:
     - go-task
     - incus
     - incus-tools
+    - incus-ui
     - jdk-openjdk
     - jq
     - minicom
@@ -48,8 +49,6 @@ packages:
     - flatpak
     - gnome-keyring
     - iptables-nft
-    # - kdialog
-    # - kwalletmanager
     - libvirt
     - mattermost-desktop
     - pam-u2f
@@ -70,7 +69,6 @@ packages:
     - texlive-installer
     - util-linux-libs
     - virt-manager
-    # - wayclip
     - wget
     - wine
     - wireless_tools
@@ -80,14 +78,15 @@ packages:
     # - gnome-shell-extension-caffeine
     # - gnome-shell-extension-dash-to-panel
     # - gnome-tweaks
-    # - incus
-    # - incus-tools
-    # - incus-ui
+    # - kdialog
+    # - kwalletmanager
     # - libayatana-appindicator
     # - ptyxis
     # - spice-gtk
+    # - wayclip
 aur_packages:
     - browsers-bin
+    - claude-code
     - google-chrome
     - input-remapper-bin
     - mailspring-bin
