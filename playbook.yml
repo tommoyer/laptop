@@ -212,6 +212,15 @@
       enabled: true
       state: started
 
+  - name: Set incusbr0 to trusted
+    become: true
+    ansible.posix.firewalld:
+      interface: incusbr0
+      zone: trusted
+      state: enabled
+      permanent: true
+      immediate: true
+
   - name: Configure user
     become: true
     ansible.builtin.user:
@@ -225,3 +234,4 @@
         - wheel
         - libvirt
         - docker
+        - incus-admin
