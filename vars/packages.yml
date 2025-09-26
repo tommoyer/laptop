@@ -91,7 +91,6 @@ aur_packages:
     - claude-code
     - google-chrome
     - input-remapper-bin
-    - mailspring-bin
     - morgen-bin
     - naps2-bin
     - neomutt-logo
