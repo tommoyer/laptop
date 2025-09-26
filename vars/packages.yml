@@ -31,6 +31,7 @@ packages:
     - python-virtualenv
     - restic
     - sshpass
+    - stow
     - tailscale
     - the_silver_searcher
     - tig
@@ -51,6 +52,7 @@ packages:
     - iptables-nft
     - libvirt
     - mattermost-desktop
+    - neomutt
     - pam-u2f
     - pandoc-cli
     - plymouth
@@ -92,6 +94,7 @@ aur_packages:
     - mailspring-bin
     - morgen-bin
     - naps2-bin
+    - neomutt-logo
     - pacman-hook-kernel-install
     - pyenv-virtualenv
     - slack-desktop
