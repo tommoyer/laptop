@@ -68,7 +68,6 @@ packages:
     - solaar
     - sops
     - syncthing
-    - texlive-installer
     - util-linux-libs
     - virt-manager
     - wget
@@ -100,13 +99,14 @@ aur_packages:
     - streamdeck-ui
     - syncthingtray
     - tail-tray
+    - texlive-installer
+    - ulauncher
     - visual-studio-code-bin
     - winbox
     # - extension-manager
     # - gnome-shell-extension-no-overview-git
     # - gnome-shell-extension-pano-bin
     # - gnome-shell-extension-tray-icons-reloaded
-    # - ulauncher
 pips:
 # Terminal
     - black
