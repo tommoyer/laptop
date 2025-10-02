@@ -42,3 +42,26 @@ ansible-galaxy install -r requirements.yml
 
 ~/.local/bin/ansible-playbook playbook.yml -i inventory --ask-become-pass --ask-vault-pass -e "ansible_connection=local"
 
+# --- Settings ---
+REPO_URL="${REPO_URL:-https://github.com/tommoyer/dotfiles.git}"
+
+# --- Initialize or update from your repo and apply ---
+CHEZ_SRC_DIR="${HOME}/.local/share/chezmoi"
+
+if [ -d "${CHEZ_SRC_DIR}/.git" ]; then
+  # Already initialized: ensure remote matches, then update+apply
+  current_remote="$(git -C "${CHEZ_SRC_DIR}" remote get-url origin || true)"
+  if [ "${current_remote}" != "${REPO_URL}" ]; then
+    echo "Existing chezmoi source remote is '${current_remote}', switching to '${REPO_URL}'..."
+    rm -rf "${CHEZ_SRC_DIR}"
+    chezmoi init --apply "${REPO_URL}"
+  else
+    echo "Updating from '${REPO_URL}'..."
+    chezmoi update --apply
+  fi
+else
+  echo "Initializing chezmoi from '${REPO_URL}'..."
+  chezmoi init --apply "${REPO_URL}"
+fi
+
+echo "Dotfiles applied successfully."

@@ -104,42 +104,12 @@
   - name: Update list of installed applications (2/2)
     ansible.builtin.command: update-desktop-database ${HOME}/.local/share/flatpak/exports/share/applications
 
-  - name: Clone dotfiles
-    ansible.builtin.git:
-      repo: https://github.com/tommoyer/dotfiles.git
-      dest: ${HOME}/.dotfiles
-
-  - name: Remove existing .ssh directory
-    ansible.builtin.file:
-      path: ${HOME}/.ssh
-      state: absent
-      
-  - name: Stow dotfiles
-    stow:
-      state: latest
-      package: '{{ item }}'
-      dir: "${HOME}/.dotfiles"
-      target: '$HOME'
-    loop: "{{ dotfiles }}"
-    
   - name: Post-Ansible finish script
     ansible.builtin.template:
       src: templates/finish-setup.sh.j2
       dest: ${HOME}/finish-setup.sh
       mode: u=rwx,g=r,o=r
 
-  - name: Setup .local_profile
-    ansible.builtin.template:
-      src: templates/local_profile.j2
-      dest: ${HOME}/.local_profile
-      mode: u=rwx,g=r,o=r
-
-  - name: Setup .gitconfig.gh
-    ansible.builtin.template:
-      src: templates/gitconfig.gh.j2
-      dest: ${HOME}/.gitconfig.gh
-      mode: u=rwx,g=r,o=r
-    
   - name: Copy default keyboard settings
     become: true
     ansible.builtin.copy:
@@ -248,22 +218,25 @@
       force: true
 
   - name: Copy incus-dns-incusbr0.service to systemd directory
-      ansible.builtin.copy:
-        src: files/incus-dns-incusbr0.service
-        dest: /etc/systemd/system/incus-dns-incusbr0.service
-        owner: root
-        group: root
-        mode: '0644'
+    become: true
+    ansible.builtin.copy:
+      src: files/incus-dns-incusbr0.service
+      dest: /etc/systemd/system/incus-dns-incusbr0.service
+      owner: root
+      group: root
+      mode: '0644'
 
-    - name: Reload systemd daemon to recognize new service
-      ansible.builtin.systemd:
-        daemon_reload: yes
+  - name: Reload systemd daemon to recognize new service
+    become: true
+    ansible.builtin.systemd:
+      daemon_reload: yes
 
-    - name: Enable and start incus-dns-incusbr0.service
-      ansible.builtin.systemd:
-        name: incus-dns-incusbr0.service
-        enabled: yes
-        state: started
+  - name: Enable and start incus-dns-incusbr0.service
+    become: true
+    ansible.builtin.systemd:
+      name: incus-dns-incusbr0.service
+      enabled: yes
+      state: started
 
   - name: Configure user
     become: true
