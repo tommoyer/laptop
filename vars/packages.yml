@@ -47,9 +47,11 @@ packages:
     - dnsmasq
     - docker
     - docker-compose
+    - feh
     - flatpak
     - gnome-keyring
     - iptables-nft
+    - khard
     - libvirt
     - mattermost-desktop
     - neomutt
@@ -70,12 +72,14 @@ packages:
     - syncthing
     - util-linux-libs
     - virt-manager
+    - w3m
     - wget
     - wine
     - wireless_tools
     - yubikey-manager
     - yubikey-personalization
     - yubikey-personalization-gui
+    - zathura
     # - gnome-shell-extension-caffeine
     # - gnome-shell-extension-dash-to-panel
     # - gnome-tweaks
