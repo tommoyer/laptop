@@ -204,6 +204,13 @@
       name: docker.service
       enabled: true
       state: started
+
+  - name: Enable incus.service
+    become: true
+    ansible.builtin.systemd:
+      name: incus.service
+      enabled: true
+      state: started
       
   - name: Enable libvirtd.socket
     become: true
