@@ -228,6 +228,43 @@
       permanent: true
       immediate: true
 
+  - name: Run incus admin init with preseed
+    become: true
+    ansible.builtin.command: /usr/bin/incus admin init --preseed files/incus-preseed.yaml
+
+  - name: Enable systemd-resolved
+    become: true
+    ansible.builtin.systemd:
+      name: systemd-resolved
+      enabled: true
+      state: started
+
+  - name: Set up systemd-resolved symlink to resolv.conf
+    become: true
+    ansible.builtin.file:
+      src: /run/systemd/resolve/stub-resolv.conf
+      dest: /etc/resolv.conf
+      state: link
+      force: true
+
+  - name: Copy incus-dns-incusbr0.service to systemd directory
+      ansible.builtin.copy:
+        src: files/incus-dns-incusbr0.service
+        dest: /etc/systemd/system/incus-dns-incusbr0.service
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Reload systemd daemon to recognize new service
+      ansible.builtin.systemd:
+        daemon_reload: yes
+
+    - name: Enable and start incus-dns-incusbr0.service
+      ansible.builtin.systemd:
+        name: incus-dns-incusbr0.service
+        enabled: yes
+        state: started
+
   - name: Configure user
     become: true
     ansible.builtin.user:
