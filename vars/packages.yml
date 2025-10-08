@@ -99,7 +99,9 @@ aur_packages:
     - naps2-bin
     - neomutt-logo
     - pacman-hook-kernel-install
+    - pandoc-latex-fontsize
     - pyenv-virtualenv
+    - python-premailer
     - slack-desktop
     - streamdeck-ui
     - syncthingtray
