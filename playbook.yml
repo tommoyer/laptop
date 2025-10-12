@@ -204,9 +204,15 @@
       permanent: true
       immediate: true
 
+  - name: List incus storage pools
+    become: true
+    ansible.builtin.command: /usr/bin/incus storage list -f csv -c n
+    register: incus_storage_list
+
   - name: Run incus admin init with preseed
     become: true
     ansible.builtin.command: /usr/bin/incus admin init --preseed files/incus-preseed.yaml
+    when: "'default' not in incus_storage_list.stdout"
 
   - name: Enable systemd-resolved
     become: true
@@ -258,3 +264,16 @@
         - libvirt
         - docker
         - incus-admin
+
+  - name: Set keyboard options using localectl
+    become: true
+    ansible.builtin.command: '/usr/bin/localectl set-x11-keymap us pc105 "" ctrl:nocaps,shift:both_capslock_cancel'
+    args:
+      creates: /etc/X11/xorg.conf.d/00-keyboard.conf
+
+- name: Workstation deployment (gcloud cli)
+  hosts: all
+  become: true
+  roles:
+    - role: google.cloud.gcloud
+      gcloud_install_type: archive

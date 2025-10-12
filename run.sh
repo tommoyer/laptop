@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -e # Exit on error
+set -u # Treat unset variables as an error
+set -o pipefail # Catch errors in piped commands
+
 die() {
     (($#)) && printf >&2 '%s\n' "$@"
     usage
@@ -52,16 +56,9 @@ REPO_URL="${REPO_URL:-https://github.com/tommoyer/dotfiles.git}"
 CHEZ_SRC_DIR="${HOME}/.local/share/chezmoi"
 
 if [ -d "${CHEZ_SRC_DIR}/.git" ]; then
-  # Already initialized: ensure remote matches, then update+apply
-  current_remote="$(git -C "${CHEZ_SRC_DIR}" remote get-url origin || true)"
-  if [ "${current_remote}" != "${REPO_URL}" ]; then
-    echo "Existing chezmoi source remote is '${current_remote}', switching to '${REPO_URL}'..."
-    rm -rf "${CHEZ_SRC_DIR}"
-    chezmoi init --apply "${REPO_URL}"
-  else
-    echo "Updating from '${REPO_URL}'..."
-    chezmoi update --apply
-  fi
+  # Already initialized: update and apply
+  echo "Updating from '${REPO_URL}'..."
+  chezmoi update --apply
 else
   echo "Initializing chezmoi from '${REPO_URL}'..."
   chezmoi init --apply "${REPO_URL}"
