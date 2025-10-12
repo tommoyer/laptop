@@ -7,3 +7,4 @@ collections:
     version: ">7.0.0"
     source: https://galaxy.ansible.com
   - name: kewlfft.aur
+  - name: google.cloud
