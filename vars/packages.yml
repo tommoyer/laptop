@@ -76,20 +76,20 @@ packages:
     - wget
     - wine
     - wireless_tools
-    - xfce4-goodies
+    # - xfce4-goodies
     - yubikey-manager
     - yubikey-personalization
     - yubikey-personalization-gui
-    - zathura
+    # - zathura
     # - gnome-shell-extension-caffeine
     # - gnome-shell-extension-dash-to-panel
     # - gnome-tweaks
-    # - kdialog
-    # - kwalletmanager
-    # - libayatana-appindicator
+    - kdialog
+    - kwalletmanager
+    - libayatana-appindicator
     # - ptyxis
     # - spice-gtk
-    # - wayclip
+    - wayclip
 aur_packages:
     - browsers-bin
     - claude-code
@@ -107,7 +107,7 @@ aur_packages:
     - syncthingtray
     - tail-tray
     - texlive-installer
-    - ulauncher
+    # - ulauncher
     - visual-studio-code-bin
     - winbox
     # - extension-manager
