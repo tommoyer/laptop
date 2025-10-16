@@ -89,7 +89,6 @@ packages:
     - libayatana-appindicator
     # - ptyxis
     # - spice-gtk
-    - wayclip
 aur_packages:
     - browsers-bin
     - claude-code
@@ -109,6 +108,7 @@ aur_packages:
     - texlive-installer
     # - ulauncher
     - visual-studio-code-bin
+    - wayclip
     - winbox
     # - extension-manager
     # - gnome-shell-extension-no-overview-git
