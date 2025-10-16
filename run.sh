@@ -47,6 +47,7 @@ ansible-galaxy install -r requirements.yml
 ~/.local/bin/ansible-playbook playbook.yml -i inventory --ask-become-pass --ask-vault-pass -e "ansible_connection=local"
 
 echo "Logging into Bitwarden"
+bw login
 export BW_SESSION="$(bw unlock --raw)"
 
 # --- Settings ---

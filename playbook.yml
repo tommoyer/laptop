@@ -250,6 +250,13 @@
       enabled: yes
       state: started
 
+  - name: Enable bluetooth.service
+    become: true
+    ansible.builtin.systemd:
+      name: bluetooth.service
+      enabled: true
+      state: started
+
   - name: Configure user
     become: true
     ansible.builtin.user:
