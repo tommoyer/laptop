@@ -92,9 +92,9 @@ packages:
 aur_packages:
     - browsers-bin
     - claude-code
+    - gcalcli
     - google-chrome
     - input-remapper-bin
-    - morgen-bin
     - naps2-bin
     - neomutt-logo
     - pacman-hook-kernel-install
@@ -103,7 +103,7 @@ aur_packages:
     - python-premailer
     - slack-desktop
     - streamdeck-ui
-    - syncthingtray
+    - syncthingtray-qt6
     - tail-tray
     - texlive-installer
     # - ulauncher
