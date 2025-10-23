@@ -257,6 +257,15 @@
       enabled: true
       state: started
 
+  - name: Copy the docker daemon.json file
+    become: true
+    ansible.builtin.copy:
+      src: files/daemon.json
+      dest: /etc/docker/daemon.json
+      owner: root
+      group: root
+      mode: '0644'
+
   - name: Configure user
     become: true
     ansible.builtin.user:
