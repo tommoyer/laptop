@@ -33,8 +33,10 @@ packages:
     - sshpass
     - stow
     - tailscale
+    - task
     - the_silver_searcher
     - tig
+    - timew
     - tmux
     - tree
     - vim
