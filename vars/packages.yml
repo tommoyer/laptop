@@ -49,6 +49,7 @@ packages:
     - dconf
     - dnsmasq
     - docker
+    - docker-buildx
     - docker-compose
     - feh
     - flatpak

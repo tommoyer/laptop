@@ -37,6 +37,8 @@ fi
 if ! pipx list | grep "package ansible" &> /dev/null
 then
   pipx install --include-deps ansible
+  pipx inject --include-deps --force ansible jc
+  pipx inject --include-deps --force ansible ansible-list
 else
   echo "Ansible already installed"
 fi
