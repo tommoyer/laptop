@@ -54,11 +54,9 @@ packages:
     - docker-compose
     - feh
     - flatpak
-    - fluxcd
     - gnome-keyring
     - iptables-nft
     - khard
-    - libretro
     - libvirt
     - mattermost-desktop
     - neomutt
@@ -69,7 +67,6 @@ packages:
     - qemu-base
     - qemu-desktop
     - qemu-system-x86-firmware
-    - retroarch
     - ripgrep-all
     - rpi-imager
     - rsync
@@ -162,7 +159,9 @@ flatpaks:
     - md.obsidian.Obsidian
     - net.codeindustry.MasterPDFEditor
     - net.lutris.Lutris
+    - org.libretro.RetroArch
     - org.prismlauncher.PrismLauncher
+    - page.kramo.Cartridges
     - us.zoom.Zoom
     # - org.ferdium.Ferdium
     # - com.getmailspring.Mailspring
