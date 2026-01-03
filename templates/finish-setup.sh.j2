@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export GH_TOKEN={{ user_secrets.gh_token }}
-
 # Yubikey setup
 if [[ ! -e /etc/u2f_mappings ]]
 then
@@ -84,10 +82,6 @@ pushd ~ &>/dev/null
 mr update
 popd &>/dev/null
 # End repo setup
-
-# chezmoi setup
-
-# end chezmoi setup
 
 # Misc. setup
 systemctl enable --user --now syncthing.service

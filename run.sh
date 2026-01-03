@@ -53,7 +53,7 @@ bw login
 export BW_SESSION="$(bw unlock --raw)"
 
 # --- Settings ---
-REPO_URL="${REPO_URL:-https://github.com/tommoyer/dotfiles.git}"
+REPO_URL="${REPO_URL:-gitea@git-ssh.moyer.wtf:tom-tom/dotfiles.git}"
 
 # --- Initialize or update from your repo and apply ---
 CHEZ_SRC_DIR="${HOME}/.local/share/chezmoi"

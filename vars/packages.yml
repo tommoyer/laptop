@@ -34,6 +34,7 @@ packages:
     - stow
     - tailscale
     - task
+    - tea
     - tgpt
     - the_silver_searcher
     - tig
@@ -132,22 +133,6 @@ pips:
     - poetry
     - ssh-import-id
 # Workstation
-dotfiles:
-# Terminal
-    - apps
-    - gpg
-    - misc
-    - mr
-    - poetry
-    - ssh
-    - tmux
-    - vcs
-    - zsh
-# Workstation
-    - fonts
-    - pics
-    - streamdeck
-    - ulauncher
 flatpaks:
     - com.bambulab.BambuStudio
     - com.bitwarden.desktop
