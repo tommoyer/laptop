@@ -78,3 +78,7 @@ popd &>/dev/null
 systemctl enable --user --now syncthing.service
 bash -c "$(wget -qO- https://git.io/vQgMr)"
 # End misc. setup
+
+# yadm clone
+yadm clone --bootstrap gitea@git-ssh.moyer.wtf:tom-tom/yadm.git
+# End yadm clone
