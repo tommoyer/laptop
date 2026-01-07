@@ -28,15 +28,6 @@ else
 fi
 # End Yubikey setup
 
-# Application setup
-gh release download -R probonopd/go-appimage -p 'appimaged-*x86_64.AppImage' continuous -D ~/Applications/
-gh release download -R AppImageCommunity/AppImageUpdate -p 'AppImageUpdate-x86_64.AppImage' continuous -D ~/Applications/
-# Download Morgen
-curl -L https://dl.todesktop.com/210203cqcj00tw1/linux/appImage/x64 -o ~/Applications/
-
-chmod +x ~/Applications/*.AppImage
-/home/tom-tom/Applications/appimaged*
-
 # End application setup
 
 # GPG key setup
@@ -87,5 +78,3 @@ popd &>/dev/null
 systemctl enable --user --now syncthing.service
 bash -c "$(wget -qO- https://git.io/vQgMr)"
 # End misc. setup
-
-

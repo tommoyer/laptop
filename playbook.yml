@@ -3,7 +3,6 @@
   hosts: all
   vars_files:
     - config.yml
-    - secrets.yml
     - packages.yml
   tasks:
   - name: Create the `aur_builder` user
@@ -35,20 +34,6 @@
     kewlfft.aur.aur:
       use: yay
       name: "{{ aur_packages }}"
-
-  - name: Configure flathub remote
-    become: true
-    community.general.flatpak_remote:
-      name: flathub
-      state: present
-      flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-      method: system
-  
-  - name: Install flatpaks
-    become: true
-    community.general.flatpak:
-      name: "{{ flatpaks }}"
-      state: present
   
   - name: Install python packages
     community.general.pipx:
@@ -110,8 +95,8 @@
     register: u2f_mappings_file
 
   - name: Post-Ansible finish script
-    ansible.builtin.template:
-      src: templates/finish-setup.sh.j2
+    ansible.builtin.copy:
+      src: files/finish-setup.sh
       dest: ${HOME}/finish-setup.sh
       mode: u=rwx,g=r,o=r
     when: not u2f_mappings_file.stat.exists
@@ -286,6 +271,10 @@
     ansible.builtin.command: '/usr/bin/localectl set-x11-keymap us pc105 "" ctrl:nocaps,shift:both_capslock_cancel'
     args:
       creates: /etc/X11/xorg.conf.d/00-keyboard.conf
+
+  - name: Set subuid and subgid ranges for root for incus unprivileged containers
+    become: true
+    ansible.builtin.command: '/usr/bin/usermod -v 1000000-1000999999 -w 1000000-1000999999 root'
 
 - name: Workstation deployment (gcloud cli)
   hosts: all

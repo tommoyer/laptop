@@ -1,37 +1,72 @@
 packages:
-# Terminal
+    - age
     - bat
+    - bitwarden
+    - bitwarden-cli
     - btop
     - byobu
-    - chezmoi
     - curl
+    - dconf
     - dialog
     - diff-so-fancy
     - direnv
+    - dnsmasq
+    - docker
+    - docker-buildx
+    - docker-compose
     - fd
+    - feh
+    - flatpak
     - fzf
     - github-cli
+    - gnome-keyring
     - go
     - go-task
     - incus
     - incus-tools
     - incus-ui
+    - iptables-nft
     - jdk-openjdk
     - jq
+    - kdialog
+    - khard
+    - kwalletmanager
+    - libayatana-appindicator
+    - libvirt
+    - lutris
+    - mattermost-desktop
     - minicom
     - myrepos
     - ncdu
+    - neomutt
     - neovim
     - nmap
+    - obsidian
     - openssh
+    - pam-u2f
+    - pandoc-cli
+    - plymouth
+    - powerline-fonts
     - prettyping
+    - prismlauncher
     - pyenv
     - python-pip
     - python-pipx
     - python-virtualenv
+    - qemu-base
+    - qemu-desktop
+    - qemu-system-x86-firmware
     - restic
+    - ripgrep-all
+    - rpi-imager
+    - rsync
+    - sloccount
+    - socat
+    - solaar
+    - sops
     - sshpass
-    - stow
+    - steam
+    - syncthing
     - tailscale
     - task
     - tea
@@ -41,60 +76,21 @@ packages:
     - timew
     - tmux
     - tree
-    - vim
-    - zsh
-    - zsh-autosuggestions
-    - zsh-syntax-highlighting
-# Workstation
-    - age
-    - bitwarden-cli
-    - dconf
-    - dnsmasq
-    - docker
-    - docker-buildx
-    - docker-compose
-    - feh
-    - flatpak
-    - gnome-keyring
-    - iptables-nft
-    - khard
-    - libvirt
-    - mattermost-desktop
-    - neomutt
-    - pam-u2f
-    - pandoc-cli
-    - plymouth
-    - powerline-fonts
-    - qemu-base
-    - qemu-desktop
-    - qemu-system-x86-firmware
-    - ripgrep-all
-    - rpi-imager
-    - rsync
-    - sloccount
-    - socat
-    - solaar
-    - sops
-    - syncthing
     - util-linux-libs
+    - vim
     - virt-manager
     - w3m
+    - wezterm
     - wget
     - wine
     - wireless_tools
-    # - xfce4-goodies
+    - yadm
     - yubikey-manager
     - yubikey-personalization
     - yubikey-personalization-gui
-    # - zathura
-    # - gnome-shell-extension-caffeine
-    # - gnome-shell-extension-dash-to-panel
-    # - gnome-tweaks
-    - kdialog
-    - kwalletmanager
-    - libayatana-appindicator
-    # - ptyxis
-    # - spice-gtk
+    - zsh
+    - zsh-autosuggestions
+    - zsh-syntax-highlighting
 aur_packages:
     - browsers-bin
     - claude-code
@@ -102,27 +98,25 @@ aur_packages:
     - gcalcli
     - google-chrome
     - input-remapper-bin
+    - masterpdfeditor-qt_include
     - naps2-bin
     - neomutt-logo
+    - orca-slicer
     - pacman-hook-kernel-install
     - pandoc-latex-fontsize
     - pyenv-virtualenv
     - python-premailer
     - slack-desktop
+    - spotify
     - streamdeck-ui
     - syncthingtray-qt6
     - tail-tray
     - texlive-installer
-    # - ulauncher
     - visual-studio-code-bin
     - wayclip
     - winbox
-    # - extension-manager
-    # - gnome-shell-extension-no-overview-git
-    # - gnome-shell-extension-pano-bin
-    # - gnome-shell-extension-tray-icons-reloaded
+    - zoom
 pips:
-# Terminal
     - black
     - flake8
     - frogmouth
@@ -132,21 +126,3 @@ pips:
     - pipenv
     - poetry
     - ssh-import-id
-# Workstation
-flatpaks:
-    - com.bambulab.BambuStudio
-    - com.bitwarden.desktop
-    - com.github.Murmele.Gittyup
-    - com.github.tchx84.Flatseal
-    - com.spotify.Client
-    - com.ticktick.TickTick
-    - com.valvesoftware.Steam
-    - md.obsidian.Obsidian
-    - net.codeindustry.MasterPDFEditor
-    - net.lutris.Lutris
-    - org.libretro.RetroArch
-    - org.prismlauncher.PrismLauncher
-    - page.kramo.Cartridges
-    - us.zoom.Zoom
-    # - org.ferdium.Ferdium
-    # - com.getmailspring.Mailspring
