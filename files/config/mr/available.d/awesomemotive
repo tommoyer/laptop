@@ -1,0 +1,3 @@
+
+[${HOME}/Repos/awesomemotive/supportassist]
+checkout = git clone https://github.com/awesomemotive/supportassist.git ${HOME}/Repos/awesomemotive/supportassist

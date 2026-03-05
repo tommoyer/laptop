@@ -1,0 +1,38 @@
+# vim: filetype=muttrc
+unmailboxes *
+
+# in/out mail servers
+set realname = "Tom Moyer"
+set imap_pass = "{{ terrablue_password }}"
+set smtp_url = "smtps://tom-tom@terrablue.ai@smtp.gmail.com:587"
+set smtp_pass = "{{ terrablue_password }}"
+set folder = "imaps://tom-tom@terrablue.ai@imap.gmail.com:993"
+set spoolfile = "+INBOX"
+
+set from = "tom-tom@terrablue.ai"
+set envelope_from
+set use_from = "yes"
+set record = "+[Gmail]/Sent"
+set trash = "+[Gmail]/Trash"
+set postponed = "+[Gmail]/Drafts"
+set mail_check = 6
+
+# Be sure to `mkdir -p` the following paths
+set header_cache =~/.neomutt/terrablue/cache/headers
+set message_cachedir =~/.neomutt/terrablue/cache/bodies
+set certificate_file =~/.neomutt/terrablue/certificates
+
+# Allow Mutt to open a new IMAP connection automatically.
+unset imap_passive
+
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 900
+
+set move = no
+
+set sort = reverse-threads
+set sort_aux = last-date-received
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_pass={{ terrablue_password }}"
+

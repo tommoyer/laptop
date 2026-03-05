@@ -47,24 +47,3 @@ fi
 ansible-galaxy install -r requirements.yml
 
 ~/.local/bin/ansible-playbook playbook.yml -i inventory --ask-become-pass --ask-vault-pass -e "ansible_connection=local"
-
-echo "Logging into Bitwarden"
-bw login
-export BW_SESSION="$(bw unlock --raw)"
-
-# --- Settings ---
-REPO_URL="${REPO_URL:-gitea@git-ssh.moyer.wtf:tom-tom/dotfiles.git}"
-
-# --- Initialize or update from your repo and apply ---
-CHEZ_SRC_DIR="${HOME}/.local/share/chezmoi"
-
-if [ -d "${CHEZ_SRC_DIR}/.git" ]; then
-  # Already initialized: update and apply
-  echo "Updating from '${REPO_URL}'..."
-  chezmoi update --apply
-else
-  echo "Initializing chezmoi from '${REPO_URL}'..."
-  chezmoi init --apply "${REPO_URL}"
-fi
-
-echo "Dotfiles applied successfully."

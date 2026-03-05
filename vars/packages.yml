@@ -1,8 +1,6 @@
 packages:
-    - age
     - bat
     - bitwarden
-    - bitwarden-cli
     - btop
     - byobu
     - curl
@@ -41,6 +39,7 @@ packages:
     - neomutt
     - neovim
     - nmap
+    - nvtop
     - obsidian
     - openssh
     - pam-u2f
@@ -112,6 +111,7 @@ aur_packages:
     - syncthingtray-qt6
     - tail-tray
     - texlive-installer
+    - timew-sync-client
     - visual-studio-code-bin
     - wayclip
     - winbox

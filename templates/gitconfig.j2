@@ -1,0 +1,49 @@
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[color]
+	ui = true
+
+[core]
+	excludesfile = ~/.gitignore
+
+[user]
+	name = Tom Moyer
+	email = tommoyer@gmail.com
+
+[credential]
+	helper = cache
+
+[pager]
+       diff = diff-so-fancy | less --tabs=1,5 -RFX
+       show = diff-so-fancy | less --tabs=1,5 -RFX
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[gitubuntu]
+	lpuser = tom-tom
+[url "https://tommoyer:{{ github_token }}@github.com"]
+	insteadOf = https://github.com
+

@@ -1,0 +1,144 @@
+#!/usr/bin/python3
+
+'''
+Inputs:
+ - Project name - Required (must not have spaces)
+ - Notes root path - Required (config)
+
+Outputs:
+ - A note folder
+'''
+
+import click
+import readline
+import re
+import datetime
+
+from string import Template
+from pathlib import Path
+
+
+'''
+Files that are created
+ - Directory: <root path>/<project-name>
+ - File: <root path>/<project-name>/Dashboard.md
+ - File: <root path>/<project-name>/_helpers.md
+ - File: <root path>/<project-name>/Notes.md
+'''
+
+notes_template = Template('''---
+name: $project
+type: project
+tags: project $tags
+---
+Status:: $status
+
+# Task Rollup
+
+## Overdue
+
+```tasks
+due before today
+not done
+path includes {{query.file.path}}
+```
+
+## Due Today
+
+```tasks
+due today
+not done
+path includes {{query.file.path}}
+```
+
+## Due Tomorrow
+
+```tasks
+due tomorrow
+not done
+path includes {{query.file.path}}
+```
+
+## No Due Date
+
+```tasks
+no due date
+not done
+path includes {{query.file.path}}
+```
+
+## Done
+
+```tasks
+done
+path includes {{query.file.path}}
+```
+
+# Notes
+
+## $date
+
+''')
+
+
+datetime_format = '%Y-%m-%d %H:%M'
+date_format = '%Y-%m-%d'
+year_format = '%Y'
+valid_name_regex = re.compile(r'^[\w-]*$')
+status_choices = click.Choice(['pending', 'in-progress', 'dropped', 'done', 'long-term', 'waiting'])
+
+
+def get_valid_folder():
+    readline.set_completer_delims('\t\n=')
+    readline.parse_and_bind("tab: complete")
+    option = input("Enter parent path for new project folder: ")
+    path = Path(option).expanduser()
+
+    while True:
+        if path.is_dir():
+            break
+        else:
+            if click.confirm(f'{path} does not exist. Create it?'):
+                path.mkdir(parents=True, exist_ok=True)
+                break
+            else:
+                option = input("Enter parent path for new project folder: ")
+                path = Path(option).expanduser()
+                continue
+
+    return path
+
+
+def get_valid_name():
+    while True:
+        name = click.prompt('Please provide a name for the project', type=str)
+        if valid_name_regex.match(name):
+            return name
+        else:
+            print('Invalid name. Names can only contain alphanumeric characters and - and _')
+
+
+def main():
+    project = get_valid_name()
+    print(f'Got {project} as the project name')
+
+    path = get_valid_folder()
+    print(f'Got {path} as the parent path for the project')
+
+    status = click.prompt('Current status', type=status_choices)
+    print(f'Got {status} as the project status')
+
+    tags = click.prompt('Tags, space separated', type=str, default='')
+
+    note_path = path.joinpath(f'{project}.md')
+
+    note = notes_template.substitute(project=project, tags=tags, status=status, date=datetime.date.today().strftime(date_format))
+
+    with open(note_path, 'x') as f:
+        f.write(note)
+
+    print(f'Created a new project at {path}')
+
+
+if __name__ == '__main__':
+    main()

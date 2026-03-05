@@ -1,0 +1,34 @@
+## Template
+## [$HOME/Repos/]
+## checkout = git clone  ~/Repos/
+
+
+# [$HOME/Repos/crest-lab/classes/itis-3246]
+# checkout = git clone git@gitlab.com:crest-lab/classes/itis-3246.git ~/Repos/crest-lab/classes/itis-3246
+
+# [$HOME/Repos/crest-lab/classes/itis-3246-scripts]
+# checkout = git clone git@gitlab.com:crest-lab/classes/itis-3246-scripts.git ~/Repos/crest-lab/classes/itis-3246-scripts
+
+# [$HOME/Repos/crest-lab/proposals/provenance-graph-analytics]
+# checkout = git clone git@gitlab.com:crest-lab/proposals/provenance-graph-analytics.git ~/Repos/crest-lab/proposals/provenance-graph-analytics
+
+# [$HOME/Repos/crest-lab/sdn/paper-dataplane-security-framework]
+# checkout = git clone git@gitlab.com:crest-lab/sdn/paper-dataplane-security-framework.git ~/Repos/crest-lab/sdn/paper-dataplane-security-framework
+
+# [$HOME/Repos/uf_sensei/db-prov-2015]
+# checkout = git clone git@bitbucket.org:uf_sensei/db-prov-2015.git ~/Repos/uf_sensei/db-prov-2015
+
+# [$HOME/Repos/crest-lab/proposals/career-resilient-cps]
+# checkout = git clone git@gitlab.com:crest-lab/proposals/career-resilient-cps.git ~/Repos/crest-lab/proposals/career-resilient-cps
+
+# [$HOME/Repos/crest-lab/proposals/nsf-oac-cici]
+# checkout = git clone git@gitlab.com:crest-lab/proposals/nsf-oac-cici.git ~/Repos/crest-lab/proposals/nsf-oac-cici
+
+# [$HOME/Repos/NASCL/CIKM22]
+# checkout = git clone https://github.com/NASCL/CIKM22.git ~/Repos/NASCL/CIKM22
+
+# [$HOME/Repos/tmoyer2/job-search-2022]
+# checkout = git clone git@gitlab.com:tmoyer2/job-search-2022.git ~/Repos/tmoyer2/job-search-2022
+
+# [/Users/tmoyer2/Repos/crest-lab/provenance/prov-grl/flurry-demo]
+# checkout = git clone git@gitlab.com:crest-lab/provenance/prov-grl/flurry-demo.git ~/Repos/crest-lab/provenance/prov-grl/flurry-demo

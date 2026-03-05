@@ -1,0 +1,16 @@
+# vim: filetype=muttrc
+
+source ~/.config/neomutt/settings
+source ~/.config/neomutt/colors
+source ~/.config/neomutt/mappings
+
+# Accounts
+source ~/.config/neomutt/accounts/uncc
+folder-hook $folder 'source ~/.config/neomutt/accounts/uncc'
+
+source ~/.config/neomutt/accounts/terrablue
+folder-hook $folder 'source ~/.config/neomutt/accounts/terrablue'
+
+source ~/.config/neomutt/accounts/gmail
+folder-hook $folder 'source ~/.config/neomutt/accounts/gmail'
+
