@@ -26,10 +26,10 @@ packages:
     - iptables-nft
     - jdk-openjdk
     - jq
-    - kdialog
+    # - kdialog
     - khard
-    - kwalletmanager
-    - libayatana-appindicator
+    # - kwalletmanager
+    # - libayatana-appindicator
     - libvirt
     - lutris
     - mattermost-desktop
@@ -39,7 +39,7 @@ packages:
     - neomutt
     - neovim
     - nmap
-    - nvtop
+    # - nvtop
     - obsidian
     - openssh
     - pam-u2f
@@ -79,11 +79,11 @@ packages:
     - vim
     - virt-manager
     - w3m
-    - wezterm
+    # - wezterm
     - wget
     - wine
     - wireless_tools
-    - yadm
+    # - yadm
     - yubikey-manager
     - yubikey-personalization
     - yubikey-personalization-gui
@@ -92,12 +92,12 @@ packages:
     - zsh-syntax-highlighting
 aur_packages:
     - browsers-bin
-    - claude-code
+    # - claude-code
     - dnscontrol
     - gcalcli
     - google-chrome
     - input-remapper-bin
-    - masterpdfeditor-qt_include
+    - masterpdfeditor
     - naps2-bin
     - neomutt-logo
     - orca-slicer
@@ -108,12 +108,13 @@ aur_packages:
     - slack-desktop
     - spotify
     - streamdeck-ui
-    - syncthingtray-qt6
+    - syncthingtray
     - tail-tray
     - texlive-installer
+    - ulauncher
     - timew-sync-client
     - visual-studio-code-bin
-    - wayclip
+    # - wayclip
     - winbox
     - zoom
 pips:
