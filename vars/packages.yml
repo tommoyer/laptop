@@ -2,7 +2,6 @@ packages:
     - bat
     - bitwarden
     - btop
-    - byobu
     - curl
     - dconf
     - dialog
@@ -12,12 +11,15 @@ packages:
     - docker
     - docker-buildx
     - docker-compose
+    - extension-manager
     - fd
     - feh
     - flatpak
     - fzf
     - github-cli
-    - gnome-keyring
+    - gnome 
+    - gnome-shell-extensions
+    - gnome-tweaks
     - go
     - go-task
     - incus
@@ -29,10 +31,11 @@ packages:
     # - kdialog
     - khard
     # - kwalletmanager
-    # - libayatana-appindicator
+    - libappindicator-gtk3
+    - libayatana-appindicator
     - libvirt
     - lutris
-    - mattermost-desktop
+    # - mattermost-desktop
     - minicom
     - myrepos
     - ncdu
@@ -42,6 +45,7 @@ packages:
     # - nvtop
     - obsidian
     - openssh
+    - opentofu
     - pam-u2f
     - pandoc-cli
     - plymouth
@@ -55,6 +59,7 @@ packages:
     - qemu-base
     - qemu-desktop
     - qemu-system-x86-firmware
+    - radeontop
     - restic
     - ripgrep-all
     - rpi-imager
@@ -67,12 +72,10 @@ packages:
     - steam
     - syncthing
     - tailscale
-    - task
     - tea
     - tgpt
     - the_silver_searcher
     - tig
-    - timew
     - tmux
     - tree
     - util-linux-libs
@@ -91,8 +94,11 @@ packages:
     - zsh-autosuggestions
     - zsh-syntax-highlighting
 aur_packages:
+    - betterbird-bin
     - browsers-bin
+    - byobu
     # - claude-code
+    - clipit-git
     - dnscontrol
     - gcalcli
     - google-chrome
@@ -100,7 +106,7 @@ aur_packages:
     - masterpdfeditor
     - naps2-bin
     - neomutt-logo
-    - orca-slicer
+    - orca-slicer-bin
     - pacman-hook-kernel-install
     - pandoc-latex-fontsize
     - pyenv-virtualenv
@@ -109,12 +115,11 @@ aur_packages:
     - spotify
     - streamdeck-ui
     - syncthingtray
-    - tail-tray
+    - trayscale
     - texlive-installer
     - ulauncher
-    - timew-sync-client
     - visual-studio-code-bin
-    # - wayclip
+    - wayclip
     - winbox
     - zoom
 pips:

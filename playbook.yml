@@ -244,6 +244,13 @@
       enabled: true
       state: started
 
+  - name: Ensure docker directory exists
+    become: true
+    ansible.builtin.file:
+      path: "/etc/docker/"
+      state: directory
+      mode: '0755'
+
   - name: Copy the docker daemon.json file
     become: true
     ansible.builtin.copy:
@@ -285,10 +292,17 @@
     - role: google.cloud.gcloud
       gcloud_install_type: archive
 
+- name: Deploy dotfiles
+  hosts: all
+  vars_files:
+    - config.yml
+    - packages.yml
+    - secrets.yml
+  tasks:
   # Create necessary directories
     - name: Ensure home directories exist
       ansible.builtin.file:
-        path: "{{ ansible_env.HOME }}/{{ item }}"
+        path: "{{ lookup('env', 'HOME') }}/{{ item }}"
         state: directory
         mode: '0755'
       loop:
@@ -315,37 +329,37 @@
     - name: Deploy .gitconfig from template
       ansible.builtin.template:
         src: templates/gitconfig.j2
-        dest: "{{ ansible_env.HOME }}/.gitconfig"
+        dest: "{{ lookup('env', 'HOME') }}/.gitconfig"
         mode: '0644'
 
     - name: Deploy .local_profile from template
       ansible.builtin.template:
         src: templates/local_profile.j2
-        dest: "{{ ansible_env.HOME }}/.local_profile"
+        dest: "{{ lookup('env', 'HOME') }}/.local_profile"
         mode: '0644'
 
     - name: Deploy user ansible.cfg from template
       ansible.builtin.template:
         src: templates/ansible_user.cfg.j2
-        dest: "{{ ansible_env.HOME }}/.ansible.cfg"
+        dest: "{{ lookup('env', 'HOME') }}/.ansible.cfg"
         mode: '0644'
 
     - name: Deploy streamdeck_ui.json from template
       ansible.builtin.template:
         src: templates/streamdeck_ui.json.j2
-        dest: "{{ ansible_env.HOME }}/.streamdeck_ui.json"
+        dest: "{{ lookup('env', 'HOME') }}/.streamdeck_ui.json"
         mode: '0644'
 
     - name: Deploy disable-pihole.sh script
       ansible.builtin.template:
         src: templates/disable-pihole.sh.j2
-        dest: "{{ ansible_env.HOME }}/Applications/disable-pihole.sh"
+        dest: "{{ lookup('env', 'HOME') }}/Applications/disable-pihole.sh"
         mode: '0755'
 
     - name: Deploy neomutt account configurations
       ansible.builtin.template:
         src: "templates/neomutt_accounts/{{ item }}.j2"
-        dest: "{{ ansible_env.HOME }}/.config/neomutt/accounts/{{ item }}"
+        dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/accounts/{{ item }}"
         mode: '0644'
       loop:
         - gmail
@@ -361,74 +375,74 @@
       loop:
         # Static dotfiles
         - src: "{{ playbook_dir }}/files/aspell.en.prepl"
-          dest: "{{ ansible_env.HOME }}/.aspell.en.prepl"
+          dest: "{{ lookup('env', 'HOME') }}/.aspell.en.prepl"
         - src: "{{ playbook_dir }}/files/aspell.en.pws"
-          dest: "{{ ansible_env.HOME }}/.aspell.en.pws"
+          dest: "{{ lookup('env', 'HOME') }}/.aspell.en.pws"
         - src: "{{ playbook_dir }}/files/gitignore"
-          dest: "{{ ansible_env.HOME }}/.gitignore"
+          dest: "{{ lookup('env', 'HOME') }}/.gitignore"
         - src: "{{ playbook_dir }}/files/latexmkrc"
-          dest: "{{ ansible_env.HOME }}/.latexmkrc"
+          dest: "{{ lookup('env', 'HOME') }}/.latexmkrc"
         - src: "{{ playbook_dir }}/files/mrconfig"
-          dest: "{{ ansible_env.HOME }}/.mrconfig"
+          dest: "{{ lookup('env', 'HOME') }}/.mrconfig"
         - src: "{{ playbook_dir }}/files/mrtrust"
-          dest: "{{ ansible_env.HOME }}/.mrtrust"
+          dest: "{{ lookup('env', 'HOME') }}/.mrtrust"
         - src: "{{ playbook_dir }}/files/sops.yaml"
-          dest: "{{ ansible_env.HOME }}/.sops.yaml"
+          dest: "{{ lookup('env', 'HOME') }}/.sops.yaml"
         - src: "{{ playbook_dir }}/files/tmux.conf"
-          dest: "{{ ansible_env.HOME }}/.tmux.conf"
+          dest: "{{ lookup('env', 'HOME') }}/.tmux.conf"
         - src: "{{ playbook_dir }}/files/zimrc"
-          dest: "{{ ansible_env.HOME }}/.zimrc"
+          dest: "{{ lookup('env', 'HOME') }}/.zimrc"
         - src: "{{ playbook_dir }}/files/zshenv"
-          dest: "{{ ansible_env.HOME }}/.zshenv"
+          dest: "{{ lookup('env', 'HOME') }}/.zshenv"
         - src: "{{ playbook_dir }}/files/zshrc"
-          dest: "{{ ansible_env.HOME }}/.zshrc"
+          dest: "{{ lookup('env', 'HOME') }}/.zshrc"
         # .config directories and files
         - src: "{{ playbook_dir }}/files/config/watson"
-          dest: "{{ ansible_env.HOME }}/.config/watson"
+          dest: "{{ lookup('env', 'HOME') }}/.config/watson"
         - src: "{{ playbook_dir }}/files/config/fontconfig"
-          dest: "{{ ansible_env.HOME }}/.config/fontconfig"
+          dest: "{{ lookup('env', 'HOME') }}/.config/fontconfig"
         - src: "{{ playbook_dir }}/files/config/neomutt/colors"
-          dest: "{{ ansible_env.HOME }}/.config/neomutt/colors"
+          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/colors"
         - src: "{{ playbook_dir }}/files/config/neomutt/mailcap"
-          dest: "{{ ansible_env.HOME }}/.config/neomutt/mailcap"
+          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/mailcap"
         - src: "{{ playbook_dir }}/files/config/neomutt/mappings"
-          dest: "{{ ansible_env.HOME }}/.config/neomutt/mappings"
+          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/mappings"
         - src: "{{ playbook_dir }}/files/config/neomutt/neomuttrc"
-          dest: "{{ ansible_env.HOME }}/.config/neomutt/neomuttrc"
+          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/neomuttrc"
         - src: "{{ playbook_dir }}/files/config/neomutt/settings"
-          dest: "{{ ansible_env.HOME }}/.config/neomutt/settings"
+          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/settings"
         - src: "{{ playbook_dir }}/files/config/mr"
-          dest: "{{ ansible_env.HOME }}/.config/mr"
+          dest: "{{ lookup('env', 'HOME') }}/.config/mr"
         # Fonts
         - src: "{{ playbook_dir }}/files/local/share/fonts"
-          dest: "{{ ansible_env.HOME }}/.local/share/fonts"
+          dest: "{{ lookup('env', 'HOME') }}/.local/share/fonts"
         # SSH files
         - src: "{{ playbook_dir }}/files/ssh/config"
-          dest: "{{ ansible_env.HOME }}/.ssh/config"
+          dest: "{{ lookup('env', 'HOME') }}/.ssh/config"
         - src: "{{ playbook_dir }}/files/ssh/authorized_keys"
-          dest: "{{ ansible_env.HOME }}/.ssh/authorized_keys"
+          dest: "{{ lookup('env', 'HOME') }}/.ssh/authorized_keys"
         - src: "{{ playbook_dir }}/files/ssh/id_rsa.pub"
-          dest: "{{ ansible_env.HOME }}/.ssh/id_rsa.pub"
+          dest: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
         # GnuPG files
         - src: "{{ playbook_dir }}/files/gnupg/gpg.conf"
-          dest: "{{ ansible_env.HOME }}/.gnupg/gpg.conf"
+          dest: "{{ lookup('env', 'HOME') }}/.gnupg/gpg.conf"
         - src: "{{ playbook_dir }}/files/gnupg/gpg-agent.conf"
-          dest: "{{ ansible_env.HOME }}/.gnupg/gpg-agent.conf"
+          dest: "{{ lookup('env', 'HOME') }}/.gnupg/gpg-agent.conf"
         # Application scripts
         - src: "{{ playbook_dir }}/files/Applications/newproj"
-          dest: "{{ ansible_env.HOME }}/Applications/newproj"
+          dest: "{{ lookup('env', 'HOME') }}/Applications/newproj"
         - src: "{{ playbook_dir }}/files/Applications/incus-vm-iso.sh"
-          dest: "{{ ansible_env.HOME }}/Applications/incus-vm-iso.sh"
+          dest: "{{ lookup('env', 'HOME') }}/Applications/incus-vm-iso.sh"
         # Media directories
         - src: "{{ playbook_dir }}/files/Music"
-          dest: "{{ ansible_env.HOME }}/Music"
+          dest: "{{ lookup('env', 'HOME') }}/Music"
         - src: "{{ playbook_dir }}/files/Pictures"
-          dest: "{{ ansible_env.HOME }}/Pictures"
+          dest: "{{ lookup('env', 'HOME') }}/Pictures"
 
     # Deploy GnuPG files
     - name: Ensure .gnupg directory has correct permissions
       ansible.builtin.file:
-        path: "{{ ansible_env.HOME }}/.gnupg"
+        path: "{{ lookup('env', 'HOME') }}/.gnupg"
         state: directory
         mode: '0700'
 

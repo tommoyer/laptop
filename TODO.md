@@ -2,3 +2,4 @@
 2. Review flatpaks that are installed and convert any that can be to Arch/AUR
 3. Migrate to this repo for dotfiles
 4. Add `gcalcli` config
+5. Remove `Movies` and `Pictures` if not symlinks
