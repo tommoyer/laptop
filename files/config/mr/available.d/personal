@@ -1,34 +1,34 @@
 
-# [${HOME}/Repos/tommoyer/nirvana]
-# checkout = git clone https://github.com/tommoyer/nirvana.git ${HOME}/Repos/tommoyer/nirvana
+# [${HOME}/Repos/tmoyer/nirvana]
+# checkout = git clone https://github.com/tommoyer/nirvana.git ${HOME}/Repos/tmoyer/nirvana
 
-[${HOME}/Repos/tommoyer/www-academic]
-checkout = git clone https://github.com/tommoyer/www-academic.git ${HOME}/Repos/tommoyer/www-academic
+[${HOME}/Repos/tmoyer/www-academic]
+checkout = git clone https://github.com/tommoyer/www-academic.git ${HOME}/Repos/tmoyer/www-academic
 
-[${HOME}/Repos/tommoyer/www]
-checkout = git clone https://github.com/tommoyer/www.git ${HOME}/Repos/tommoyer/www
+[${HOME}/Repos/tmoyer/www]
+checkout = git clone https://github.com/tommoyer/www.git ${HOME}/Repos/tmoyer/www
 
-[${HOME}/Repos/tommoyer/prints]
-checkout = git clone https://github.com/tommoyer/prints.git ${HOME}/Repos/tommoyer/prints
+[${HOME}/Repos/tmoyer/prints]
+checkout = git clone https://github.com/tommoyer/prints.git ${HOME}/Repos/tmoyer/prints
 
-# [${HOME}/Repos/tommoyer/luadns]
-# checkout = git clone https://github.com/tommoyer/luadns.git ${HOME}/Repos/tommoyer/luadns
+# [${HOME}/Repos/tmoyer/luadns]
+# checkout = git clone https://github.com/tommoyer/luadns.git ${HOME}/Repos/tmoyer/luadns
 
 # [${HOME}/.dotfiles]
 # checkout = git clone https://github.com/tommoyer/dotfiles.git ${HOME}/.dotfiles
 # order = 1
 
-# [${HOME}/Repos/tommoyer/infra]
-# checkout = git clone https://github.com/tommoyer/infra.git ${HOME}/Repos/tommoyer/infra
+# [${HOME}/Repos/tmoyer/infra]
+# checkout = git clone https://github.com/tommoyer/infra.git ${HOME}/Repos/tmoyer/infra
 
-[${HOME}/Repos/tommoyer/homelab]
-checkout = git clone https://github.com/tommoyer/homelab.git ${HOME}/Repos/tommoyer/homelab
+[${HOME}/Repos/tmoyer/homelab]
+checkout = git clone https://github.com/tommoyer/homelab.git ${HOME}/Repos/tmoyer/homelab
 
-[${HOME}/Repos/tommoyer/laptop]
-checkout = git clone https://github.com/tommoyer/laptop.git ${HOME}/Repos/tommoyer/laptop
+[${HOME}/Repos/tmoyer/laptop]
+checkout = git clone https://github.com/tommoyer/laptop.git ${HOME}/Repos/tmoyer/laptop
 
-# [${HOME}/Repos/tommoyer/pihole]
-# checkout = git clone https://github.com/tommoyer/pihole.git ${HOME}/Repos/tommoyer/pihole
+# [${HOME}/Repos/tmoyer/pihole]
+# checkout = git clone https://github.com/tommoyer/pihole.git ${HOME}/Repos/tmoyer/pihole
 
 # [${HOME}/Arduino]
 # checkout = git clone https://github.com/tommoyer/arduino.git ${HOME}/Arduino
@@ -45,36 +45,36 @@ skip = [ "$1" = push ]
 checkout =  git clone https://github.com/3v1n0/zsh-bash-completions-fallback ${HOME}/.zsh-bash-completions-fallback
 skip = [ "$1" = push ]
 
-# [${HOME}/Repos/tommoyer/ccd]
-# checkout =  git clone https://github.com/tommoyer/ccd.git ${HOME}/Repos/tommoyer/ccd
+# [${HOME}/Repos/tmoyer/ccd]
+# checkout =  git clone https://github.com/tommoyer/ccd.git ${HOME}/Repos/tmoyer/ccd
 
-# [${HOME}/Repos/tommoyer/functions-sandbox]
-# checkout =  git clone https://github.com/tommoyer/functions-sandbox.git ${HOME}/Repos/tommoyer/functions-sandbox
+# [${HOME}/Repos/tmoyer/functions-sandbox]
+# checkout =  git clone https://github.com/tommoyer/functions-sandbox.git ${HOME}/Repos/tmoyer/functions-sandbox
 
-# [${HOME}/Repos/tommoyer/teleport]
-# checkout =  git clone https://github.com/tommoyer/teleport.git ${HOME}/Repos/tommoyer/teleport
+# [${HOME}/Repos/tmoyer/teleport]
+# checkout =  git clone https://github.com/tommoyer/teleport.git ${HOME}/Repos/tmoyer/teleport
 
-# [${HOME}/Repos/tommoyer/openwrt]
-# checkout = git clone https://github.com/tommoyer/openwrt.git ${HOME}/Repos/tommoyer/openwrt
+# [${HOME}/Repos/tmoyer/openwrt]
+# checkout = git clone https://github.com/tommoyer/openwrt.git ${HOME}/Repos/tmoyer/openwrt
 
 # [${HOME}/.apps/git-latexdiff]
 # checkout = git clone https://gitlab.com/git-latexdiff/git-latexdiff.git ${HOME}/.apps/git-latexdiff
 # skip = [ "$1" = push ]
 
-# [${HOME}/Repos/tommoyer/Watson]
-# checkout = git clone https://github.com/tommoyer/Watson.git ${HOME}/Repos/tommoyer/Watson
+# [${HOME}/Repos/tmoyer/Watson]
+# checkout = git clone https://github.com/tommoyer/Watson.git ${HOME}/Repos/tmoyer/Watson
  
-# [${HOME}/Repos/tommoyer/watson2sf]
-# checkout = git clone https://github.com/tommoyer/watson2sf.git ${HOME}/Repos/tommoyer/watson2sf
+# [${HOME}/Repos/tmoyer/watson2sf]
+# checkout = git clone https://github.com/tommoyer/watson2sf.git ${HOME}/Repos/tmoyer/watson2sf
  
-# [${HOME}/Repos/tommoyer/watson-tray]
-# checkout = git clone https://github.com/tommoyer/watson-tray.git ${HOME}/Repos/tommoyer/watson-tray
+# [${HOME}/Repos/tmoyer/watson-tray]
+# checkout = git clone https://github.com/tommoyer/watson-tray.git ${HOME}/Repos/tmoyer/watson-tray
 
-# [/home/tmoyer/Repos/tommoyer/class-ansible]
-# checkout = git clone https://github.com/tommoyer/class-ansible.git ${HOME}/Repos/tommoyer/class-ansible
+# [/home/tmoyer/Repos/tmoyer/class-ansible]
+# checkout = git clone https://github.com/tommoyer/class-ansible.git ${HOME}/Repos/tmoyer/class-ansible
 
-# [${HOME}/Repos/tommoyer/cases]
-# checkout = git clone https://github.com/tommoyer/cases.git ${HOME}/Repos/tommoyer/cases
+# [${HOME}/Repos/tmoyer/cases]
+# checkout = git clone https://github.com/tommoyer/cases.git ${HOME}/Repos/tmoyer/cases
 
 # [${HOME}/.apps/fzf]
 # checkout = git clone https://github.com/junegunn/fzf.git ${HOME}/.apps/fzf
@@ -88,15 +88,15 @@ skip = [ "$1" = push ]
 # checkout = git clone https://github.com/denilsonsa/prettyping.git ${HOME}/.apps/prettyping
 # skip = [ "$1" = push ]
 
-# [${HOME}/Repos/tommoyer/challenge-0]
-# checkout = git clone https://github.com/tommoyer/challenge-0.git ${HOME}/Repos/tommoyer/challenge-0
+# [${HOME}/Repos/tmoyer/challenge-0]
+# checkout = git clone https://github.com/tommoyer/challenge-0.git ${HOME}/Repos/tmoyer/challenge-0
 
-[${HOME}/Repos/tommoyer/itis-3246]
-checkout = git clone https://github.com/tommoyer/itis-3246.git ${HOME}/Repos/tommoyer/itis-3246
+[${HOME}/Repos/tmoyer/itis-3246]
+checkout = git clone https://github.com/tommoyer/itis-3246.git ${HOME}/Repos/tmoyer/itis-3246
 
-[${HOME}/Repos/tommoyer/itis-4-5246]
-checkout = git clone https://github.com/tommoyer/itis-4-5246.git ${HOME}/Repos/tommoyer/itis-4-5246
+[${HOME}/Repos/tmoyer/itis-4-5246]
+checkout = git clone https://github.com/tommoyer/itis-4-5246.git ${HOME}/Repos/tmoyer/itis-4-5246
 
-[${HOME}/Repos/tommoyer/TimeTaskTray]
-checkout = git clone https://github.com/tommoyer/TimeTaskTray.git ${HOME}/Repos/tommoyer/TimeTaskTray
+[${HOME}/Repos/tmoyer/TimeTaskTray]
+checkout = git clone https://github.com/tommoyer/TimeTaskTray.git ${HOME}/Repos/tmoyer/TimeTaskTray
 
