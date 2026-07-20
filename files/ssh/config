@@ -19,3 +19,6 @@ Host *.incus
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
 
+Host saturn
+  Hostname 192.168.215.221
+  User tom

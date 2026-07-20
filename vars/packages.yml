@@ -1,6 +1,7 @@
 packages:
     - bat
     - bitwarden
+    - breeze-gtk
     - btop
     - curl
     - dconf
@@ -11,15 +12,12 @@ packages:
     - docker
     - docker-buildx
     - docker-compose
-    - extension-manager
     - fd
     - feh
     - flatpak
     - fzf
     - github-cli
-    - gnome 
-    - gnome-shell-extensions
-    - gnome-tweaks
+    - gnome-keyring
     - go
     - go-task
     - incus
@@ -28,27 +26,25 @@ packages:
     - iptables-nft
     - jdk-openjdk
     - jq
-    # - kdialog
-    - khard
-    # - kwalletmanager
+    - kde-gtk-config
+    - kdialog
+    - kwalletmanager
     - libappindicator-gtk3
     - libayatana-appindicator
     - libvirt
     - lutris
-    # - mattermost-desktop
     - minicom
     - myrepos
     - ncdu
-    - neomutt
     - neovim
     - nmap
-    # - nvtop
     - obsidian
     - openssh
     - opentofu
     - pam-u2f
     - pandoc-cli
     - plymouth
+    - powerline
     - powerline-fonts
     - prettyping
     - prismlauncher
@@ -82,11 +78,13 @@ packages:
     - vim
     - virt-manager
     - w3m
-    # - wezterm
+    - wezterm
     - wget
     - wine
     - wireless_tools
-    # - yadm
+    - wl-clipboard
+    - xdg-desktop-portal
+    - xdg-desktop-portal-kde
     - yubikey-manager
     - yubikey-personalization
     - yubikey-personalization-gui
@@ -97,15 +95,12 @@ aur_packages:
     - betterbird-bin
     - browsers-bin
     - byobu
-    # - claude-code
-    - clipit-git
+    - claude-code
     - dnscontrol
-    - gcalcli
     - google-chrome
     - input-remapper-bin
     - masterpdfeditor
     - naps2-bin
-    - neomutt-logo
     - orca-slicer-bin
     - pacman-hook-kernel-install
     - pandoc-latex-fontsize
@@ -115,8 +110,8 @@ aur_packages:
     - spotify
     - streamdeck-ui
     - syncthingtray
-    - trayscale
     - texlive-installer
+    - tmux-plugin-manager
     - ulauncher
     - visual-studio-code-bin
     - wayclip

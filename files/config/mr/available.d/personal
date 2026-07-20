@@ -100,3 +100,5 @@ checkout = git clone https://github.com/tommoyer/itis-4-5246.git ${HOME}/Repos/t
 [${HOME}/Repos/tmoyer/TimeTaskTray]
 checkout = git clone https://github.com/tommoyer/TimeTaskTray.git ${HOME}/Repos/tmoyer/TimeTaskTray
 
+[${HOME}/Repos/asgeirtj/system_prompts_leaks]
+checkout = git clone https://github.com/asgeirtj/system_prompts_leaks.git ${HOME}/Repos/asgeirtj/system_prompts_leaks
