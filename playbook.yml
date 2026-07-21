@@ -396,8 +396,6 @@
           dest: "{{ lookup('env', 'HOME') }}/.zshenv"
         - src: "{{ playbook_dir }}/files/zshrc"
           dest: "{{ lookup('env', 'HOME') }}/.zshrc"
-        - src: "{{ playbook_dir }}/files/eu.betterbird.Betterbird.desktop"
-          dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/eu.betterbird.Betterbird.desktop"
         # .config directories and files
         - src: "{{ playbook_dir }}/files/config/fontconfig"
           dest: "{{ lookup('env', 'HOME') }}/.config/fontconfig"
