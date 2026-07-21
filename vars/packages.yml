@@ -15,6 +15,7 @@ packages:
     - fd
     - feh
     - flatpak
+    - fprintd
     - fzf
     - github-cli
     - gnome-keyring

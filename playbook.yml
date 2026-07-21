@@ -8,7 +8,7 @@
   
   tasks:
   - name: Create the `aur_builder` user
-    become: yes
+    become: true
     ansible.builtin.user:
       name: aur_builder
       create_home: yes
@@ -16,7 +16,7 @@
       system: true
 
   - name: Allow the `aur_builder` user to run `sudo pacman` without a password
-    become: yes
+    become: true
     ansible.builtin.lineinfile:
       path: /etc/sudoers.d/11-install-aur_builder
       line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
@@ -31,7 +31,7 @@
       state: latest
 
   - name: Install aur packages
-    become: yes
+    become: true
     become_user: aur_builder
     kewlfft.aur.aur:
       use: yay
@@ -396,21 +396,11 @@
           dest: "{{ lookup('env', 'HOME') }}/.zshenv"
         - src: "{{ playbook_dir }}/files/zshrc"
           dest: "{{ lookup('env', 'HOME') }}/.zshrc"
+        - src: "{{ playbook_dir }}/files/eu.betterbird.Betterbird.desktop"
+          dest: "{{ lookup('env', 'HOME') }}/.local/share/applications/eu.betterbird.Betterbird.desktop"
         # .config directories and files
-        - src: "{{ playbook_dir }}/files/config/watson"
-          dest: "{{ lookup('env', 'HOME') }}/.config/watson"
         - src: "{{ playbook_dir }}/files/config/fontconfig"
           dest: "{{ lookup('env', 'HOME') }}/.config/fontconfig"
-        - src: "{{ playbook_dir }}/files/config/neomutt/colors"
-          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/colors"
-        - src: "{{ playbook_dir }}/files/config/neomutt/mailcap"
-          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/mailcap"
-        - src: "{{ playbook_dir }}/files/config/neomutt/mappings"
-          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/mappings"
-        - src: "{{ playbook_dir }}/files/config/neomutt/neomuttrc"
-          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/neomuttrc"
-        - src: "{{ playbook_dir }}/files/config/neomutt/settings"
-          dest: "{{ lookup('env', 'HOME') }}/.config/neomutt/settings"
         - src: "{{ playbook_dir }}/files/config/mr"
           dest: "{{ lookup('env', 'HOME') }}/.config/mr"
         # Fonts

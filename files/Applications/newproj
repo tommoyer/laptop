@@ -84,7 +84,7 @@ path includes {{query.file.path}}
 datetime_format = '%Y-%m-%d %H:%M'
 date_format = '%Y-%m-%d'
 year_format = '%Y'
-valid_name_regex = re.compile(r'^[\w-]*$')
+valid_name_regex = re.compile(r'^[\w.-]*$')
 status_choices = click.Choice(['pending', 'in-progress', 'dropped', 'done', 'long-term', 'waiting'])
 
 
